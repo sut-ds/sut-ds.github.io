@@ -1,0 +1,105 @@
+---
+title: "Assignments"
+---
+
+::: {.callout-important}
+All assignments must be submitted through **CW**.
+:::
+
+## Current Assignments
+
+::: {.assignment-list}
+::: {.assignment-item}
+### Assignment 1
+**Topic:** Data manipulation, visualization, and elementary inference
+
+::: {.assignment-download}
+**File Download**
+
+<p class="no-file">No file is available for download yet.</p>
+:::
+
+::: {.assignment-notes}
+**Notes:** TBD
+:::
+:::
+
+::: {.assignment-item}
+### Assignment 2
+**Topic:** Web scraping, database population, probability and statistics, and regression
+
+::: {.assignment-download}
+**File Download**
+
+<p class="no-file">No file is available for download yet.</p>
+:::
+
+::: {.assignment-notes}
+**Notes:** TBD
+:::
+:::
+
+::: {.assignment-item}
+### Assignment 3
+**Topic:** Classical machine learning
+
+::: {.assignment-download}
+**File Download**
+
+<p class="no-file">No file is available for download yet.</p>
+:::
+
+::: {.assignment-notes}
+**Notes:** TBD
+:::
+:::
+
+::: {.assignment-item}
+### Assignment 4
+**Topic:** Causality, deep learning, and transformers
+
+::: {.assignment-download}
+**File Download**
+
+<p class="no-file">No file is available for download yet.</p>
+:::
+
+::: {.assignment-notes}
+**Notes:** TBD
+:::
+:::
+
+::: {.assignment-item}
+### Assignment 5
+**Topic:** Generative and diffusion models
+
+::: {.assignment-download}
+**File Download**
+
+<p class="no-file">No file is available for download yet.</p>
+:::
+
+::: {.assignment-notes}
+**Notes:** TBD
+:::
+:::
+
+::: {.assignment-item}
+### Assignment 6
+**Topic:** Time-series forecasting
+
+::: {.assignment-download}
+**File Download**
+
+<p class="no-file">No file is available for download yet.</p>
+:::
+
+::: {.assignment-notes}
+**Notes:** TBD
+:::
+:::
+:::
+
+## Submission Policy
+
+Please follow the late and integrity policies in [Syllabus](../syllabus.qmd).

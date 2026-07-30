@@ -1,0 +1,28 @@
+---
+title: "Course Staff"
+---
+
+## Instructors
+
+### Instructor 1
+
+- Department of Electrical Engineering, Sharif University of Technology
+
+### Instructor 2
+
+- Department of Electrical Engineering, Sharif University of Technology
+
+## Teaching Assistants
+
+### Head TA
+
+- Primary contact for course coordination
+- Responsible for managing TA operations and announcements
+
+::: {.callout-note}
+Please use course communication channels for questions about logistics, deadlines, and tutorial coordination.
+:::
+
+## Contact and Office Hours
+
+Detailed contact information and office hours will be posted here at the beginning of the semester.

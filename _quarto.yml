@@ -1,0 +1,37 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Foundations of Data Science"
+  description: "Official course website for Data Science at the Department of Electrical Engineering, Sharif University of Technology."
+  navbar:
+    left:
+      - text: Home
+        href: index.qmd
+      - text: Syllabus
+        href: syllabus.qmd
+      - text: Schedule
+        href: schedule.qmd
+      - text: Staff
+        href: staff.qmd
+      - text: Announcements
+        href: announcements/
+      - text: Assignments
+        href: assignments/
+      - text: Tutorials
+        href: tutorials/
+      - text: Project
+        href: project/
+  page-footer:
+    left: "Sharif University of Technology<br>Department of Electrical Engineering"
+    center: "[Foundations of Data Science](index.qmd)"
+
+format:
+  html:
+    theme: [flatly, assets/css/styles.scss]
+    toc: true
+    smooth-scroll: true
+
+execute:
+  freeze: auto

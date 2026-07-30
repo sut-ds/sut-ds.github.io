@@ -1,0 +1,27 @@
+---
+title: "Announcements"
+---
+
+## Current Semester Announcements
+
+::: {.announcement-list}
+::: {.announcement-item}
+**No announcements yet**
+
+::: {.announcement-meta}
+Posted: TBD
+:::
+
+The first update will be published at the beginning of the semester.
+:::
+
+::: {.announcement-item}
+**How to use this page**
+
+::: {.announcement-meta}
+Posted: TBD
+:::
+
+Check this page regularly for assignment releases, deadline updates, and class notices.
+:::
+:::
