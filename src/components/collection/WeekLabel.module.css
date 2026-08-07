@@ -1,0 +1,15 @@
+.label {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-500);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+}
+
+.secondary {
+  display: block;
+  margin-top: var(--space-1);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-500);
+}

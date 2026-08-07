@@ -1,0 +1,32 @@
+.nav {
+  /* landmark wrapper */
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  list-style: none;
+}
+
+.link {
+  color: var(--color-neutral-500);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--color-brand-700);
+}
+
+.onDark .link {
+  color: var(--color-brand-200);
+}
+
+.onDark .link:hover {
+  color: var(--color-neutral-0);
+}
+
+.compact .link {
+  font-size: var(--font-size-xs);
+}

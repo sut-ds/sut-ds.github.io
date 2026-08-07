@@ -1,0 +1,121 @@
+.layout {
+  display: grid;
+  gap: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: minmax(11rem, 14rem) minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-7);
+  }
+}
+
+.main {
+  min-width: 0;
+}
+
+.intro {
+  margin: 0 0 var(--space-6);
+  padding: var(--space-5);
+  border: var(--border-width-thin) solid var(--color-brand-200);
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at 12% 20%, rgba(43, 192, 188, 0.14), transparent 45%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(247, 250, 252, 0.85));
+}
+
+.introTitle {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand-900);
+}
+
+.introBody {
+  margin: 0;
+  max-width: 40rem;
+  color: var(--color-neutral-700);
+  font-size: var(--font-size-md);
+  line-height: 1.55;
+}
+
+.steps {
+  display: grid;
+  gap: var(--space-3);
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 640px) {
+  .steps {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-4);
+  }
+}
+
+.step {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.stepIndex {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-accent-600);
+  letter-spacing: 0.04em;
+}
+
+.stepLabel {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand-900);
+}
+
+.stepBody {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+  line-height: 1.45;
+}
+
+.board {
+  display: grid;
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.help {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: var(--border-width-thin) solid var(--color-neutral-200);
+  scroll-margin-top: calc(var(--header-offset) + var(--space-4));
+}
+
+.helpTitle {
+  margin: 0 0 var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand-900);
+}
+
+.helpBody {
+  margin: 0 0 var(--space-3);
+  max-width: 36rem;
+  color: var(--color-neutral-700);
+}
+
+.helpLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--font-size-sm);
+}

@@ -1,0 +1,64 @@
+.list {
+  list-style: none;
+  margin-top: var(--space-5);
+  border-top: var(--border-width-thin) solid var(--color-neutral-200);
+}
+
+.item {
+  padding-block: var(--space-4);
+  border-bottom: var(--border-width-thin) solid var(--color-neutral-200);
+}
+
+.itemTitle {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand-900);
+}
+
+.itemMeta {
+  margin-top: var(--space-1);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+  font-variant-numeric: tabular-nums;
+}
+
+.itemBody {
+  margin-top: var(--space-2);
+  color: var(--color-neutral-700);
+}
+
+.empty {
+  margin-top: var(--space-5);
+  color: var(--color-neutral-700);
+}
+
+.syllabusBlock {
+  margin-top: var(--space-6);
+}
+
+.syllabusBlock h2 {
+  font-size: var(--font-size-2xl);
+  color: var(--color-brand-900);
+}
+
+.syllabusBlock p {
+  margin-top: var(--space-3);
+  max-width: 42rem;
+  color: var(--color-neutral-700);
+}
+
+.homeMeta {
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+.homeSection {
+  margin-top: var(--space-7);
+}
+
+.homeSection h2 {
+  font-size: var(--font-size-xl);
+  color: var(--color-brand-900);
+}

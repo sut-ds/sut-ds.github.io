@@ -1,0 +1,79 @@
+.note {
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
+  max-width: 48rem;
+  border-inline-start: var(--border-width-strong) solid var(--color-brand-400);
+  background: rgba(231, 238, 247, 0.55);
+}
+
+.noteLabel {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-brand-600);
+}
+
+.noteBody {
+  margin: 0;
+  color: var(--color-neutral-700);
+  line-height: 1.55;
+  font-size: var(--font-size-sm);
+}
+
+.noteBody + .noteBody {
+  margin-top: var(--space-3);
+}
+
+.legendRelease {
+  color: var(--color-accent-600);
+  font-weight: var(--font-weight-semibold);
+}
+
+.legendDeadline {
+  color: var(--color-warm-600);
+  font-weight: var(--font-weight-semibold);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-700);
+}
+
+.legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.swatchLecture,
+.swatchWorkshop,
+.swatchRelease,
+.swatchDeadline {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 2px;
+}
+
+.swatchLecture {
+  background: var(--color-brand-500);
+}
+
+.swatchWorkshop {
+  background: var(--color-brand-300);
+}
+
+.swatchRelease {
+  background: var(--color-accent-500);
+}
+
+.swatchDeadline {
+  background: var(--color-warm-600);
+}

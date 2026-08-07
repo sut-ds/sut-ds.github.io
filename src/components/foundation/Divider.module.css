@@ -1,0 +1,13 @@
+.divider {
+  border: 0;
+  border-top: var(--border-width-thin) solid var(--color-neutral-200);
+  margin: 0;
+}
+
+.brand {
+  border-top-color: var(--color-brand-200);
+}
+
+.onDark {
+  border-top-color: var(--color-brand-700);
+}

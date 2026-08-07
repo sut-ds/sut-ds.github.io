@@ -1,0 +1,163 @@
+.panel {
+  position: relative;
+  display: grid;
+  grid-template-columns: 0.35rem minmax(0, 1fr);
+  scroll-margin-top: calc(var(--header-offset) + var(--space-4));
+  border: var(--border-width-thin) solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, rgba(43, 192, 188, 0.06), transparent 42%),
+    rgba(255, 255, 255, 0.72);
+  overflow: hidden;
+  transition:
+    border-color var(--motion-duration-fast) var(--motion-ease-out),
+    transform var(--motion-duration-fast) var(--motion-ease-out),
+    background-color var(--motion-duration-fast) var(--motion-ease-out);
+}
+
+.panel:hover {
+  border-color: var(--color-brand-200);
+  transform: translateY(-1px);
+}
+
+.accent {
+  background: linear-gradient(
+    180deg,
+    var(--color-accent-500) 0%,
+    var(--color-brand-600) 100%
+  );
+}
+
+.main {
+  min-width: 0;
+  padding: var(--space-5) var(--space-5) var(--space-5) var(--space-4);
+}
+
+.header {
+  display: grid;
+  gap: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    column-gap: var(--space-6);
+  }
+}
+
+.identity {
+  min-width: 0;
+}
+
+.kicker {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-600);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand-900);
+  line-height: 1.15;
+}
+
+.instructor {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+@media (min-width: 768px) {
+  .instructor {
+    justify-content: flex-end;
+    text-align: end;
+  }
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+  border-radius: 999px;
+  border: var(--border-width-thin) solid var(--color-brand-200);
+  background: var(--color-brand-50);
+  color: var(--color-brand-800);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+}
+
+.instructorText {
+  display: grid;
+  gap: 0.15rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-brand-900);
+}
+
+.instructorLabel {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-neutral-500);
+}
+
+.summary {
+  margin: var(--space-4) 0 0;
+  max-width: 40rem;
+  color: var(--color-neutral-700);
+  font-size: var(--font-size-md);
+  line-height: 1.55;
+}
+
+.paired {
+  margin: var(--space-3) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+}
+
+.practice {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  padding-top: var(--space-4);
+  border-top: var(--border-width-thin) dashed var(--color-brand-200);
+}
+
+@media (min-width: 768px) {
+  .practice {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+}
+
+.practiceBlock {
+  display: grid;
+  gap: var(--space-2);
+  align-content: start;
+}
+
+.practiceLabel {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-brand-700);
+}
+
+.videoLink {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+}

@@ -1,0 +1,117 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: var(--color-brand-100);
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 20%, rgba(20, 163, 160, 0.18), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(47, 106, 168, 0.35), transparent 50%),
+    linear-gradient(155deg, var(--color-brand-950) 0%, var(--color-brand-900) 48%, var(--color-brand-800) 100%);
+  min-height: min(72vh, 40rem);
+  display: flex;
+  align-items: flex-end;
+}
+
+.staticScene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(183, 207, 232, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(183, 207, 232, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  background-position: center;
+  mask-image: radial-gradient(ellipse 70% 65% at 70% 40%, black 20%, transparent 75%);
+}
+
+.staticDots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(43, 192, 188, 0.35) 1px, transparent 1px);
+  background-size: 72px 72px;
+  background-position: 24px 12px;
+  opacity: 0.4;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(7, 21, 40, 0.15) 0%,
+    rgba(7, 21, 40, 0.35) 45%,
+    rgba(7, 21, 40, 0.72) 100%
+  );
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  width: min(100% - (var(--layout-gutter) * 2), var(--layout-max));
+  margin-inline: auto;
+  padding-block: var(--space-8) var(--space-7);
+}
+
+.identity {
+  max-width: 40rem;
+  animation: heroRise 700ms var(--motion-ease-out) both;
+}
+
+.institutionRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.institution {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-brand-300);
+}
+
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 6vw, var(--font-size-5xl));
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.08;
+  color: var(--color-neutral-0);
+}
+
+.tagline {
+  margin-top: var(--space-4);
+  max-width: 34rem;
+  font-size: var(--font-size-lg);
+  line-height: 1.5;
+  color: var(--color-brand-100);
+}
+
+.ctas {
+  margin-top: var(--space-6);
+  animation: heroRise 700ms var(--motion-ease-out) 120ms both;
+}
+
+@keyframes heroRise {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .identity,
+  .ctas {
+    animation: none;
+  }
+}

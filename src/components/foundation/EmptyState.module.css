@@ -1,0 +1,26 @@
+.empty {
+  margin-top: var(--space-5);
+  padding-block: var(--space-5);
+  border-top: var(--border-width-thin) solid var(--color-neutral-200);
+}
+
+.message {
+  max-width: 40rem;
+  font-size: var(--font-size-md);
+  color: var(--color-neutral-700);
+}
+
+.detail {
+  margin-top: var(--space-2);
+  max-width: 40rem;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-4);
+  list-style: none;
+}

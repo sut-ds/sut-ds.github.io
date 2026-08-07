@@ -1,8 +1,10 @@
-name: Publish Quarto Website
+name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - master
   workflow_dispatch:
 
 permissions:
@@ -12,30 +14,37 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-
-      - name: Render Quarto website
-        uses: quarto-dev/quarto-actions/render@v2
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          to: html
+          node-version: "20"
+          cache: npm
 
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v5
+      - name: Install
+        run: npm ci
 
-      - name: Upload site artifact
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: out
 
   deploy:
     needs: build

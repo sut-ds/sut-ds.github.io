@@ -1,0 +1,33 @@
+.link {
+  color: var(--color-brand-600);
+  text-decoration: none;
+  text-underline-offset: 0.15em;
+}
+
+.link:hover {
+  color: var(--color-brand-700);
+  text-decoration: underline;
+}
+
+.link:focus-visible {
+  text-decoration: underline;
+}
+
+.externalIndicator {
+  margin-inline-start: 0.25em;
+  font-size: 0.85em;
+  color: var(--color-neutral-500);
+}
+
+.material {
+  font-weight: var(--font-weight-medium);
+  white-space: nowrap;
+}
+
+.onDark {
+  color: var(--color-brand-200);
+}
+
+.onDark:hover {
+  color: var(--color-neutral-0);
+}

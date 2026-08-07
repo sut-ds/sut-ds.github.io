@@ -1,0 +1,22 @@
+.category {
+  margin-top: var(--space-7);
+}
+
+.categoryList {
+  list-style: none;
+  border-top: var(--border-width-thin) solid var(--color-neutral-200);
+}
+
+.help {
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: var(--border-width-thin) solid var(--color-neutral-200);
+}
+
+.helpList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-3);
+  list-style: none;
+}

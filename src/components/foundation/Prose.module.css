@@ -1,0 +1,54 @@
+.prose {
+  max-width: 42rem;
+  color: var(--color-neutral-950);
+  font-size: var(--font-size-md);
+  line-height: 1.65;
+}
+
+.prose > * + * {
+  margin-top: var(--space-4);
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  margin-top: var(--space-6);
+  color: var(--color-brand-900);
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-semibold);
+}
+
+.prose h2 {
+  font-size: var(--font-size-2xl);
+}
+
+.prose h3 {
+  font-size: var(--font-size-xl);
+}
+
+.prose a {
+  color: var(--color-brand-600);
+}
+
+.prose a:hover {
+  color: var(--color-brand-700);
+}
+
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}
+
+.prose ul,
+.prose ol {
+  padding-inline-start: 1.25rem;
+}
+
+.prose li + li {
+  margin-top: var(--space-2);
+}
+
+.lead {
+  font-size: var(--font-size-lg);
+  color: var(--color-neutral-700);
+}

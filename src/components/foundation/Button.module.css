@@ -1,0 +1,119 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  border-radius: var(--radius-md);
+  border: var(--border-width-thin) solid transparent;
+  font-family: var(--font-sans);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--motion-duration-fast) var(--motion-ease-out),
+    color var(--motion-duration-fast) var(--motion-ease-out),
+    border-color var(--motion-duration-fast) var(--motion-ease-out);
+}
+
+.button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.button:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button:active:not(:disabled) {
+    transform: none;
+  }
+}
+
+.md {
+  padding: 0.625rem 1rem;
+  font-size: var(--font-size-sm);
+}
+
+.sm {
+  padding: 0.4rem 0.75rem;
+  font-size: var(--font-size-sm);
+}
+
+.lg {
+  padding: 0.85rem 1.25rem;
+  font-size: var(--font-size-md);
+}
+
+.primary {
+  background: var(--color-brand-700);
+  color: var(--color-neutral-0);
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--color-brand-800);
+  color: var(--color-neutral-0);
+}
+
+.accent {
+  background: var(--color-accent-600);
+  color: var(--color-neutral-0);
+}
+
+.accent:hover:not(:disabled) {
+  background: var(--color-accent-500);
+  color: var(--color-neutral-0);
+}
+
+.secondary {
+  background: transparent;
+  border-color: var(--color-brand-600);
+  color: var(--color-brand-700);
+}
+
+.secondary:hover:not(:disabled) {
+  background: var(--color-brand-50);
+  color: var(--color-brand-800);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--color-brand-700);
+}
+
+.ghost:hover:not(:disabled) {
+  color: var(--color-brand-900);
+  text-decoration: underline;
+}
+
+.onDark {
+  background: var(--color-neutral-0);
+  color: var(--color-brand-900);
+}
+
+.onDark:hover:not(:disabled) {
+  background: var(--color-brand-100);
+  color: var(--color-brand-950);
+}
+
+.onDarkSecondary {
+  background: transparent;
+  border-color: var(--color-brand-200);
+  color: var(--color-neutral-0);
+}
+
+.onDarkSecondary:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-neutral-0);
+}
+
+.onDarkGhost {
+  background: transparent;
+  color: var(--color-brand-200);
+}
+
+.onDarkGhost:hover:not(:disabled) {
+  color: var(--color-neutral-0);
+  text-decoration: underline;
+}

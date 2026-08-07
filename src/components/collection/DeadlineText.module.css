@@ -1,0 +1,17 @@
+.text {
+  font-variant-numeric: tabular-nums;
+  font-size: inherit;
+}
+
+.upcoming {
+  color: var(--color-warm-600);
+  font-weight: var(--font-weight-medium);
+}
+
+.past {
+  color: var(--color-neutral-500);
+}
+
+.neutral {
+  color: var(--color-neutral-700);
+}

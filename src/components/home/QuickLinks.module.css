@@ -1,0 +1,16 @@
+.section {
+  margin-top: var(--space-7);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-3);
+  list-style: none;
+}
+
+.link {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-medium);
+}

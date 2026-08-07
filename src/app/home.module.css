@@ -1,0 +1,27 @@
+.page {
+  /* Home owns its own hero + sections */
+}
+
+.below {
+  padding-block: var(--space-7) var(--space-8);
+}
+
+.snapshot {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: var(--border-width-thin) solid var(--color-neutral-200);
+  max-width: 42rem;
+}
+
+.snapshotTitle {
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand-900);
+}
+
+.snapshotBody {
+  color: var(--color-neutral-700);
+  font-size: var(--font-size-md);
+  line-height: 1.65;
+}

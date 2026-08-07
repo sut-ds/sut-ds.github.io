@@ -1,0 +1,26 @@
+.list {
+  list-style: none;
+  margin: 0;
+  border-top: var(--border-width-thin) solid var(--color-neutral-200);
+}
+
+.compact {
+  border-top-color: transparent;
+}
+
+.group {
+  margin-top: var(--space-6);
+}
+
+.group:first-child {
+  margin-top: 0;
+}
+
+.groupTitle {
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-neutral-500);
+}

@@ -1,0 +1,25 @@
+.header {
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand-900);
+  line-height: 1.2;
+}
+
+.description {
+  margin-top: var(--space-3);
+  max-width: 42rem;
+  font-size: var(--font-size-lg);
+  color: var(--color-neutral-700);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}

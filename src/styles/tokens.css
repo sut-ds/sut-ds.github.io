@@ -1,0 +1,119 @@
+/* Design tokens from design-spec/04-design-system.md */
+
+:root {
+  /* Brand — dark blue */
+  --color-brand-950: #071528;
+  --color-brand-900: #0b1f3a;
+  --color-brand-800: #123056;
+  --color-brand-700: #1a3e6e;
+  --color-brand-600: #24578f;
+  --color-brand-500: #2f6aa8;
+  --color-brand-400: #4e88c4;
+  --color-brand-300: #7aa7d6;
+  --color-brand-200: #b7cfe8;
+  --color-brand-100: #e7eef7;
+  --color-brand-50: #f4f7fb;
+
+  /* Accent — teal-cyan */
+  --color-accent-600: #0e8a86;
+  --color-accent-500: #14a3a0;
+  --color-accent-400: #2bc0bc;
+  --color-accent-100: #d8f3f2;
+
+  /* Warm — deadlines sparingly */
+  --color-warm-600: #b86a1b;
+  --color-warm-400: #e09a45;
+  --color-warm-100: #fff1e0;
+
+  /* Neutrals */
+  --color-neutral-950: #0e141b;
+  --color-neutral-700: #3a4654;
+  --color-neutral-500: #6b7785;
+  --color-neutral-300: #c5ccd5;
+  --color-neutral-200: #dee3ea;
+  --color-neutral-100: #eff2f6;
+  --color-neutral-0: #ffffff;
+
+  /* Semantic */
+  --color-semantic-success: #1f7a4c;
+  --color-semantic-warning: #9a6700;
+  --color-semantic-danger: #b42318;
+  --color-semantic-info: var(--color-brand-600);
+
+  /* Typography */
+  --font-display: var(--font-fraunces), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-sans: var(--font-source-sans-3), "Segoe UI", "Helvetica Neue", sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, Consolas, monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Layout */
+  --layout-max: 1120px;
+  --layout-narrow: 720px;
+  --layout-wide: 1280px;
+  --layout-gutter: 16px;
+
+  /* Shape */
+  --radius-none: 0;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  --border-width-thin: 1px;
+  --border-width-strong: 2px;
+
+  --shadow-none: none;
+  --shadow-sm: 0 1px 2px rgba(7, 21, 40, 0.06);
+  --shadow-md: 0 8px 24px rgba(7, 21, 40, 0.12);
+
+  /* Motion */
+  --motion-duration-fast: 150ms;
+  --motion-duration-base: 200ms;
+  --motion-duration-slow: 250ms;
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Breakpoint references (for documentation; use media queries in CSS) */
+  --bp-tablet: 768px;
+  --bp-desktop: 1024px;
+  --bp-wide: 1280px;
+
+  /* Sticky header clearance for in-page anchors */
+  --header-offset: 5.5rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --layout-gutter: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --layout-gutter: 32px;
+  }
+}

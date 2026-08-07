@@ -1,0 +1,33 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.wash {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 45% at 85% 0%, rgba(20, 163, 160, 0.14), transparent 60%),
+    radial-gradient(ellipse 55% 40% at 5% 70%, rgba(36, 87, 143, 0.12), transparent 55%),
+    radial-gradient(ellipse 50% 35% at 60% 100%, rgba(7, 21, 40, 0.06), transparent 50%);
+}
+
+.grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.35;
+  background-image:
+    linear-gradient(rgba(183, 207, 232, 0.14) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(183, 207, 232, 0.14) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, black 10%, transparent 75%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    opacity: 0.85;
+  }
+}

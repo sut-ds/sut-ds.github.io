@@ -1,0 +1,342 @@
+.layout {
+  display: grid;
+  gap: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: minmax(12rem, 15rem) minmax(0, 1fr);
+    align-items: start;
+    gap: var(--space-7);
+  }
+}
+
+.main {
+  min-width: 0;
+}
+
+.section {
+  margin-top: var(--space-7);
+  padding-top: var(--space-6);
+  border-top: var(--border-width-thin) solid var(--color-neutral-200);
+}
+
+.section:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
+.kicker {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent-600);
+}
+
+.sectionTitle {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand-900);
+  line-height: 1.2;
+}
+
+.sectionLead {
+  margin: 0 0 var(--space-4);
+  max-width: 40rem;
+  color: var(--color-neutral-700);
+}
+
+.overviewBody {
+  margin-top: var(--space-4);
+}
+
+.objectiveList,
+.checkList,
+.phaseList,
+.assessmentList,
+.nextList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.objectiveList {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.objectiveItem {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+  max-width: 42rem;
+  padding: var(--space-3) 0;
+  border-bottom: var(--border-width-thin) solid var(--color-neutral-200);
+  color: var(--color-neutral-950);
+  line-height: 1.55;
+}
+
+.objectiveItem:last-child {
+  border-bottom: 0;
+}
+
+.objectiveIndex {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-brand-600);
+  padding-top: 0.15rem;
+}
+
+.checkList {
+  display: grid;
+  gap: var(--space-3);
+  max-width: 42rem;
+}
+
+.checkList li {
+  position: relative;
+  padding-inline-start: 1.35rem;
+  color: var(--color-neutral-950);
+  line-height: 1.55;
+}
+
+.checkList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--color-accent-500);
+}
+
+.phaseList {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  max-width: 44rem;
+}
+
+.phaseItem {
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+}
+
+.phaseIndex {
+  display: grid;
+  place-items: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-top: 0.1rem;
+  border-radius: 999px;
+  background: var(--color-brand-100);
+  color: var(--color-brand-800);
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.phaseTitle {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand-900);
+}
+
+.phaseBody {
+  margin-top: var(--space-1);
+  color: var(--color-neutral-700);
+  line-height: 1.55;
+}
+
+.gradingWrap {
+  overflow-x: auto;
+  margin-top: var(--space-5);
+  border: var(--border-width-thin) solid var(--color-neutral-200);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.gradingTable {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 32rem;
+}
+
+.gradingCaption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.gradingTable th,
+.gradingTable td {
+  padding: var(--space-3) var(--space-4);
+  text-align: start;
+  vertical-align: top;
+  border-bottom: var(--border-width-thin) solid var(--color-neutral-200);
+}
+
+.gradingTable thead th {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-neutral-500);
+  background: var(--color-brand-50);
+}
+
+.gradingTable tbody tr:last-child th,
+.gradingTable tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.gradingTable tbody tr {
+  transition: background-color var(--motion-duration-fast) var(--motion-ease-out);
+}
+
+.gradingTable tbody tr:hover {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.gradingComponent {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand-900);
+  white-space: nowrap;
+}
+
+.gradingWeight {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-brand-800);
+  white-space: nowrap;
+}
+
+.gradingDetail {
+  color: var(--color-neutral-700);
+  font-size: var(--font-size-sm);
+  line-height: 1.5;
+}
+
+.assessmentList {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+  max-width: 44rem;
+}
+
+.assessmentItem {
+  padding-block: var(--space-3);
+  border-bottom: var(--border-width-thin) solid var(--color-neutral-200);
+}
+
+.assessmentItem:last-child {
+  border-bottom: 0;
+}
+
+.assessmentTitle {
+  margin: 0;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand-900);
+}
+
+.assessmentDetail {
+  margin-top: var(--space-2);
+  color: var(--color-neutral-700);
+  line-height: 1.55;
+}
+
+.callout {
+  margin-top: var(--space-5);
+  max-width: 44rem;
+  padding: var(--space-4);
+  border-inline-start: var(--border-width-strong) solid var(--color-accent-500);
+  background: rgba(216, 243, 242, 0.45);
+}
+
+.calloutLabel {
+  margin: 0 0 var(--space-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-accent-600);
+}
+
+.calloutBody {
+  margin: 0;
+  color: var(--color-neutral-700);
+  line-height: 1.55;
+}
+
+.inlineLink {
+  margin-top: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+.next {
+  margin-top: var(--space-8);
+  padding: var(--space-6) var(--space-5);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, rgba(231, 238, 247, 0.9), rgba(244, 247, 251, 0.95)),
+    var(--color-brand-50);
+  border: var(--border-width-thin) solid var(--color-brand-200);
+}
+
+.nextTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-brand-900);
+}
+
+.nextLead {
+  margin-top: var(--space-2);
+  max-width: 36rem;
+  color: var(--color-neutral-700);
+}
+
+.nextList {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.nextList li {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.nextList span {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+@media (min-width: 768px) {
+  .nextList {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+}

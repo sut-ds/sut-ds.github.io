@@ -1,0 +1,16 @@
+.container {
+  width: min(100% - (var(--layout-gutter) * 2), var(--max, var(--layout-max)));
+  margin-inline: auto;
+}
+
+.default {
+  --max: var(--layout-max);
+}
+
+.narrow {
+  --max: var(--layout-narrow);
+}
+
+.wide {
+  --max: var(--layout-wide);
+}

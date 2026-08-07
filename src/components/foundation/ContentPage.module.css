@@ -1,0 +1,7 @@
+.page {
+  padding-block: var(--space-7) var(--space-8);
+}
+
+.body {
+  margin-top: var(--space-2);
+}

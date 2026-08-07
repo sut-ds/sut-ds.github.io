@@ -1,0 +1,23 @@
+.mark {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.sm {
+  width: 2rem;
+  height: 2rem;
+}
+
+.lg {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+/* Mark is dark/monochrome — invert for deep navy surfaces only */
+.onDark {
+  filter: brightness(0) invert(1);
+  opacity: 0.95;
+}
