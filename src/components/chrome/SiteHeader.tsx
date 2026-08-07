@@ -43,20 +43,18 @@ export function SiteHeader() {
           type="button"
           aria-expanded={menuOpen}
           aria-controls="mobile-nav"
-          aria-label="Open menu"
-          onClick={() => setMenuOpen(true)}
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMenuOpen((open) => !open)}
         >
-          <Icon name="menu" size={20} />
+          <Icon name={menuOpen ? "close" : "menu"} size={20} />
         </button>
       </Container>
 
-      <div id="mobile-nav">
-        <MobileNav
-          open={menuOpen}
-          onClose={closeMenu}
-          returnFocusRef={menuButtonRef}
-        />
-      </div>
+      <MobileNav
+        open={menuOpen}
+        onClose={closeMenu}
+        returnFocusRef={menuButtonRef}
+      />
     </header>
   );
 }

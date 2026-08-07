@@ -8,6 +8,7 @@ import {
   useRef,
   type RefObject,
 } from "react";
+import { createPortal } from "react-dom";
 
 import { Icon } from "@/components/foundation/Icon";
 import { getChrome, getContact } from "@/lib/content";
@@ -39,6 +40,7 @@ export function MobileNav({ open, onClose, returnFocusRef }: MobileNavProps) {
   const dialogRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const titleId = useId();
+  const mounted = typeof document !== "undefined";
 
   useEffect(() => {
     if (!open) {
@@ -54,7 +56,6 @@ export function MobileNav({ open, onClose, returnFocusRef }: MobileNavProps) {
     main?.setAttribute("inert", "");
     main?.setAttribute("aria-hidden", "true");
 
-    // Move focus into the panel (close control — consistent per a11y spec).
     closeButtonRef.current?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -101,12 +102,17 @@ export function MobileNav({ open, onClose, returnFocusRef }: MobileNavProps) {
     };
   }, [open, onClose, returnFocusRef]);
 
-  if (!open) {
+  if (!open || !mounted) {
     return null;
   }
 
-  return (
-    <div className={styles.panel} role="presentation" onClick={onClose}>
+  const panel = (
+    <div
+      className={styles.panel}
+      role="presentation"
+      onClick={onClose}
+      id="mobile-nav"
+    >
       <div
         ref={dialogRef}
         className={styles.dialog}
@@ -130,47 +136,53 @@ export function MobileNav({ open, onClose, returnFocusRef }: MobileNavProps) {
           </button>
         </div>
 
-        <ul className={styles.list}>
-          {PRIMARY_NAV_HREFS.map((item) => {
-            const active = isActive(pathname, item.href);
-            return (
-              <li key={item.href}>
-                <Link
-                  className={cx(styles.link, active && styles.active)}
-                  href={item.href}
-                  aria-current={active ? "page" : undefined}
-                  onClick={onClose}
-                >
-                  {chrome.navLabels[item.key]}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        <div className={styles.utility}>
-          <ul className={styles.utilityList}>
-            {UTILITY_NAV_HREFS.map((item) => (
-              <li key={item.href}>
-                <Link className={styles.link} href={item.href} onClick={onClose}>
-                  {chrome.utilityLabels[item.key]}
-                </Link>
-              </li>
-            ))}
-            {contact.footerContactHref ? (
-              <li>
-                <Link
-                  className={styles.link}
-                  href={contact.footerContactHref}
-                  onClick={onClose}
-                >
-                  {contact.footerContactLabel ?? chrome.utilityLabels.contact}
-                </Link>
-              </li>
-            ) : null}
+        <div className={styles.scroller}>
+          <ul className={styles.list}>
+            {PRIMARY_NAV_HREFS.map((item) => {
+              const active = isActive(pathname, item.href);
+              return (
+                <li key={item.href}>
+                  <Link
+                    className={cx(styles.link, active && styles.active)}
+                    href={item.href}
+                    aria-current={active ? "page" : undefined}
+                    onClick={onClose}
+                  >
+                    {chrome.navLabels[item.key]}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
+
+          <div className={styles.utility}>
+            <ul className={styles.utilityList}>
+              {UTILITY_NAV_HREFS.map((item) => (
+                <li key={item.href}>
+                  <Link className={styles.link} href={item.href} onClick={onClose}>
+                    {chrome.utilityLabels[item.key]}
+                  </Link>
+                </li>
+              ))}
+              {contact.footerContactHref ? (
+                <li>
+                  <Link
+                    className={styles.link}
+                    href={contact.footerContactHref}
+                    onClick={onClose}
+                  >
+                    {contact.footerContactLabel ?? chrome.utilityLabels.contact}
+                  </Link>
+                </li>
+              ) : null}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
   );
+
+  // Portal escapes .site-shell stacking (siblings share z-index: 1, so main/hero
+  // painted over an in-tree fixed drawer).
+  return createPortal(panel, document.body);
 }
