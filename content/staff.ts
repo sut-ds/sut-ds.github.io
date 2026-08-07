@@ -36,9 +36,9 @@ export const staff: StaffMember[] = [
     publish: true,
     order: 2,
     bio: "Teaches statistical learning, deep learning, transformers and small language models, generative and diffusion models, and modern time-series modeling.",
-    // email: "…",
+    email: "seyedsaberi@gmail.com",
     // telegram: "@…",
-    // photo: { src: "/images/staff/amir-hossein-saberi.webp", alt: "Dr. Amir Hossein Saberi, Instructor" },
+    photo: { src: "/images/staff/amir-hossein-saberi.jpg", alt: "Dr. Amir Hossein Saberi, Instructor" },
   },
   {
     id: "mohammad-eshtehardian",
