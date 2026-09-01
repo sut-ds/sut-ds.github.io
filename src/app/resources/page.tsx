@@ -7,12 +7,17 @@ import { OnThisPage } from "@/components/foundation/OnThisPage";
 import { TextLink } from "@/components/foundation/TextLink";
 import { cx } from "@/lib/cx";
 import { getChrome, getPublishedResources, getResourcesGroupedByCategory } from "@/lib/content";
+import { generatePageMetadata } from "@/lib/metadata";
 
 import styles from "./resources.module.css";
 
-export const metadata: Metadata = {
-  title: "Resources",
-};
+const chrome = getChrome();
+
+export const metadata: Metadata = generatePageMetadata(
+  chrome.navLabels.resources,
+  chrome.pageSupportingSentences.resources,
+  "/resources/"
+);
 
 function densityForCategory(
   category: string,
@@ -26,7 +31,10 @@ export default function ResourcesPage() {
   const chrome = getChrome();
   const resources = getPublishedResources();
   const groups = getResourcesGroupedByCategory();
-
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: chrome.navLabels.resources },
+  ];
   const onThisPage = [
     ...groups.map((group) => ({
       id: group.category,
@@ -39,6 +47,7 @@ export default function ResourcesPage() {
     <ContentPage
       title={chrome.navLabels.resources}
       description={chrome.pageSupportingSentences.resources}
+      breadcrumbs={breadcrumbs}
     >
       {resources.length === 0 ? (
         <EmptyState

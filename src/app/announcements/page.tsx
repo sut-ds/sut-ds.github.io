@@ -10,19 +10,30 @@ import {
   getLecturesByIds,
   getPublishedAnnouncements,
 } from "@/lib/content";
+import { generatePageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Announcements",
-};
+const chrome = getChrome();
+
+export const metadata: Metadata = generatePageMetadata(
+  chrome.navLabels.announcements,
+  chrome.pageSupportingSentences.announcements,
+  "/announcements/"
+);
 
 export default function AnnouncementsPage() {
   const chrome = getChrome();
   const announcements = getPublishedAnnouncements();
 
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: chrome.utilityLabels.announcements },
+  ];
+
   return (
     <ContentPage
       title={chrome.utilityLabels.announcements}
       description={chrome.pageSupportingSentences.announcements}
+      breadcrumbs={breadcrumbs}
     >
       {announcements.length === 0 ? (
         <EmptyState

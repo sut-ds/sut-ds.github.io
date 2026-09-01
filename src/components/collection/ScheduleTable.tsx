@@ -108,9 +108,6 @@ export function ScheduleTable({ entries }: ScheduleTableProps) {
                 </td>
                 <td>
                   <div className={styles.title}>{entry.title}</div>
-                  {entry.week != null ? (
-                    <div className={styles.meta}>Week {entry.week}</div>
-                  ) : null}
                 </td>
                 <td>
                   {entry.instructor ? (

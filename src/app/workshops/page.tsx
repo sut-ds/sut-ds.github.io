@@ -11,16 +11,26 @@ import {
   getPublishedWorkshops,
   getStaffByIds,
 } from "@/lib/content";
+import { generatePageMetadata } from "@/lib/metadata";
 
 import styles from "./workshops.module.css";
 
-export const metadata: Metadata = {
-  title: "Workshops",
-};
+const chrome = getChrome();
+
+export const metadata: Metadata = generatePageMetadata(
+  chrome.navLabels.workshops,
+  chrome.pageSupportingSentences.workshops,
+  "/workshops/"
+);
 
 export default function WorkshopsPage() {
   const chrome = getChrome();
   const workshops = getPublishedWorkshops();
+
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: chrome.navLabels.workshops },
+  ];
 
   const onThisPage = [
     { id: "studio", label: "How labs work" },
@@ -35,6 +45,7 @@ export default function WorkshopsPage() {
     <ContentPage
       title={chrome.navLabels.workshops}
       description={chrome.pageSupportingSentences.workshops}
+      breadcrumbs={breadcrumbs}
     >
       {workshops.length === 0 ? (
         <EmptyState

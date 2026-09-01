@@ -11,12 +11,18 @@ import {
   getHomeAnnouncements,
   getUpcomingDeadlines,
 } from "@/lib/content";
+import { generatePageMetadata } from "@/lib/metadata";
 
 import styles from "./home.module.css";
 
-export const metadata: Metadata = {
-  title: "Home",
-};
+const course = getCourse();
+const chrome = getChrome();
+
+export const metadata: Metadata = generatePageMetadata(
+  course.title,
+  chrome.pageSupportingSentences.home,
+  "/"
+);
 
 export default function HomePage() {
   const course = getCourse();

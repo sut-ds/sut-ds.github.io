@@ -79,6 +79,8 @@ export function AssignmentRow({
             alt={assignment.logo.alt}
             width={48}
             height={48}
+            loading="lazy"
+            decoding="async"
           />
         ) : (
           <span className={styles.index}>{railLabel}</span>

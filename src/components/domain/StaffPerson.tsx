@@ -60,6 +60,8 @@ export function StaffPerson({ person, className }: StaffPersonProps) {
           alt={person.photo.alt}
           width={96}
           height={96}
+          loading="lazy"
+          decoding="async"
         />
       ) : (
         <div className={styles.avatar} aria-hidden="true">

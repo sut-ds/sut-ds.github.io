@@ -6,12 +6,17 @@ import { EmptyState } from "@/components/foundation/EmptyState";
 import { SectionHeader } from "@/components/foundation/SectionHeader";
 import { TextLink } from "@/components/foundation/TextLink";
 import { getChrome, getFaqGroupedByCategory } from "@/lib/content";
+import { generatePageMetadata } from "@/lib/metadata";
 
 import styles from "./faq.module.css";
 
-export const metadata: Metadata = {
-  title: "FAQ",
-};
+const chrome = getChrome();
+
+export const metadata: Metadata = generatePageMetadata(
+  chrome.utilityLabels.faq,
+  chrome.pageSupportingSentences.faq,
+  "/faq/"
+);
 
 function categoryHeading(category: string): string {
   if (!category) return "General";
@@ -21,11 +26,15 @@ function categoryHeading(category: string): string {
 export default function FaqPage() {
   const chrome = getChrome();
   const groups = getFaqGroupedByCategory();
-
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: chrome.utilityLabels.faq },
+  ];
   return (
     <ContentPage
       title={chrome.utilityLabels.faq}
       description={chrome.pageSupportingSentences.faq}
+      breadcrumbs={breadcrumbs}
     >
       {groups.length === 0 ? (
         <EmptyState

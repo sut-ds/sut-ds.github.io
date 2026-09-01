@@ -1,0 +1,8 @@
+# robots.txt for sut-ds.github.io
+# Allows all crawlers to index the entire site
+
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://sut-ds.github.io/sitemap.xml

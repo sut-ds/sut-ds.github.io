@@ -11,12 +11,17 @@ import {
   getPublishedStaff,
   getWorkshopByLectureId,
 } from "@/lib/content";
+import { generatePageMetadata } from "@/lib/metadata";
 
 import styles from "./lectures.module.css";
 
-export const metadata: Metadata = {
-  title: "Lectures",
-};
+const chrome = getChrome();
+
+export const metadata: Metadata = generatePageMetadata(
+  chrome.navLabels.lectures,
+  chrome.pageSupportingSentences.lectures,
+  "/lectures/"
+);
 
 function presenterHrefFor(
   presenter: string | undefined,
@@ -36,10 +41,16 @@ export default function LecturesPage() {
   const lectures = getPublishedLectures();
   const staff = getPublishedStaff();
 
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: chrome.navLabels.lectures },
+  ];
+
   return (
     <ContentPage
       title={chrome.navLabels.lectures}
       description={chrome.pageSupportingSentences.lectures}
+      breadcrumbs={breadcrumbs}
     >
       {lectures.length === 0 ? (
         <EmptyState

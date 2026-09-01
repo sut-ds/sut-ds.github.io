@@ -5,6 +5,7 @@ import {
   deadlineEmphasis,
 } from "@/components/collection/DeadlineText";
 import { AssignmentRow } from "@/components/collection/AssignmentRow";
+import { AssignmentSchema } from "@/components/schema/AssignmentSchema";
 import { ContentPage } from "@/components/foundation/ContentPage";
 import { EmptyState } from "@/components/foundation/EmptyState";
 import { OnThisPage } from "@/components/foundation/OnThisPage";
@@ -17,13 +18,18 @@ import {
   getPublishedProjects,
   getStaffByIds,
 } from "@/lib/content";
+import { generatePageMetadata } from "@/lib/metadata";
 import type { Assignment } from "@/types/content";
 
 import styles from "./assignments.module.css";
 
-export const metadata: Metadata = {
-  title: "Assignments",
-};
+const chrome = getChrome();
+
+export const metadata: Metadata = generatePageMetadata(
+  chrome.navLabels.assignments,
+  chrome.pageSupportingSentences.assignments,
+  "/assignments/"
+);
 
 function relatedLectureLinks(assignment: Assignment) {
   return getLecturesByIds(assignment.lectureIds).map((lecture) => ({
@@ -64,11 +70,23 @@ export default function AssignmentsPage() {
     { id: "policies", label: "Policies & help" },
   ].filter(Boolean) as Array<{ id: string; label: string }>;
 
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: chrome.navLabels.assignments },
+  ];
+
   return (
-    <ContentPage
-      title={chrome.navLabels.assignments}
-      description={chrome.pageSupportingSentences.assignments}
-    >
+    <>
+      {/* EducationEvent schemas for each assignment */}
+      {overviewItems.map((assignment) => (
+        <AssignmentSchema key={assignment.slug} assignment={assignment} />
+      ))}
+      
+      <ContentPage
+        title={chrome.navLabels.assignments}
+        description={chrome.pageSupportingSentences.assignments}
+        breadcrumbs={breadcrumbs}
+      >
       {isEmpty ? (
         <EmptyState
           message={chrome.emptyStates.assignments}
@@ -254,5 +272,6 @@ export default function AssignmentsPage() {
         </div>
       )}
     </ContentPage>
+    </>
   );
 }

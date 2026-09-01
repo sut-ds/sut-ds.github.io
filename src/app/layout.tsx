@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 
+import { SchemaScripts } from "@/components/schema/SchemaScripts";
 import { SiteAtmosphere } from "@/components/chrome/SiteAtmosphere";
 import { SiteFooter } from "@/components/chrome/SiteFooter";
 import { SiteHeader } from "@/components/chrome/SiteHeader";
@@ -40,6 +41,14 @@ export const metadata: Metadata = {
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
+  alternates: {
+    canonical: siteUrl,
+    languages: {
+      "en-US": siteUrl,
+      // Add additional language versions here when multi-language support is implemented
+      // Example: "fa": "https://sut-ds.github.io/fa/",
+    },
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -78,6 +87,15 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${sourceSans3.variable} ${ibmPlexMono.variable}`}
     >
+      <head>
+        <SchemaScripts />
+        <link
+          rel="search"
+          type="application/opensearchdescription+xml"
+          href="/opensearch.xml"
+          title={course.title}
+        />
+      </head>
       <body>
         <div className="site-shell">
           <SiteAtmosphere />

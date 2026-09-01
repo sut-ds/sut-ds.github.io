@@ -109,6 +109,8 @@ export type Lecture = {
   slug: string;
   title: string;
   publish: boolean;
+  /** Number of class meetings allocated to this topic. */
+  sessions?: number;
   week?: number;
   date?: string;
   summary?: string;

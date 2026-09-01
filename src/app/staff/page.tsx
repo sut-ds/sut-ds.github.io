@@ -1,19 +1,25 @@
 import type { Metadata } from "next";
 
 import { StaffPerson } from "@/components/domain/StaffPerson";
+import { StaffPersonSchema } from "@/components/schema/StaffPersonSchema";
 import { ContentPage } from "@/components/foundation/ContentPage";
 import { EmptyState } from "@/components/foundation/EmptyState";
 import { Prose } from "@/components/foundation/Prose";
 import { SectionHeader } from "@/components/foundation/SectionHeader";
 import { TextLink } from "@/components/foundation/TextLink";
 import { getChrome, getContact, getStaffByRole } from "@/lib/content";
+import { generatePageMetadata } from "@/lib/metadata";
 import type { StaffMember } from "@/types/content";
 
 import styles from "./staff.module.css";
 
-export const metadata: Metadata = {
-  title: "Staff",
-};
+const chrome = getChrome();
+
+export const metadata: Metadata = generatePageMetadata(
+  chrome.navLabels.staff,
+  chrome.pageSupportingSentences.staff,
+  "/staff/"
+);
 
 function StaffGroup({
   title,
@@ -48,11 +54,26 @@ export default function StaffPage() {
   const { instructors, teachingAssistants, other } = getStaffByRole();
   const hasStaff =
     instructors.length + teachingAssistants.length + other.length > 0;
+  
+  // Collect all staff for schema generation
+  const allStaff = [...instructors, ...teachingAssistants, ...other];
+
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: chrome.navLabels.staff },
+  ];
 
   return (
-    <ContentPage
-      title={chrome.navLabels.staff}
-      description={chrome.pageSupportingSentences.staff}
+    <>
+      {/* Person schemas for each staff member */}
+      {allStaff.map((person) => (
+        <StaffPersonSchema key={person.id} staff={person} />
+      ))}
+      
+      <ContentPage
+        title={chrome.navLabels.staff}
+        description={chrome.pageSupportingSentences.staff}
+        breadcrumbs={breadcrumbs}
     >
       <section className={styles.contact} id="contact" aria-labelledby="staff-contact">
         <SectionHeader id="staff-contact" title="Contact guidance" />
@@ -90,5 +111,6 @@ export default function StaffPage() {
         </ul>
       </section>
     </ContentPage>
+    </>
   );
 }

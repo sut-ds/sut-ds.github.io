@@ -6,7 +6,7 @@
  * the official calendar. Display uses Jalali + Gregorian labels.
  *
  * Rows include:
- * - one lecture session per syllabus topic
+ * - one lecture row per allocated class session
  * - one workshop row when the lecture lists a workshop
  * - homework/project **release** and **deadline** rows (color-coded in the UI)
  */
@@ -16,13 +16,15 @@ import { staff } from "./staff";
 import { workshops } from "./workshops";
 import type { ScheduleEntry } from "@/types/content";
 
-/** Approx. 1 Mehr 1405 → 30 Dey 1405 (Gregorian placeholders). */
-const TERM_START = Date.UTC(2026, 8, 23); // 23 Sep 2026
-const TERM_END = Date.UTC(2027, 0, 20); // 20 Jan 2027
+/**
+ * Schedule settings — edit these values when the calendar changes.
+ * TERM_START must be the first Sunday; subsequent classes are generated
+ * automatically for every Sunday and Tuesday.
+ */
+const TERM_START = Date.UTC(2026, 8, 27); // Sunday, 27 Sep 2026
 
 /** Syllabus-aligned assignment timing (lecture slug → assignment slug). */
 const assignmentByLectureSlug: Record<string, string> = {
-  "01-course-introduction": "project-orientation",
   "05-data-visualization-revised": "homework-1",
   "06-ml-dataflow-part-1-data-processing-revised": "project-phase-1",
   "09-regression": "homework-2",
@@ -32,7 +34,27 @@ const assignmentByLectureSlug: Record<string, string> = {
   "19-diffusion-models": "homework-5",
   "20-modern-time-series-modeling-with-transformers": "homework-6",
   "22-ml-dataflow-part-4-pipeline-revised": "project-phase-3",
-  "23-ml-dataflow-part-5-monitoring": "final-project-presentation",
+};
+
+/**
+ * Published deadline overrides. Use Gregorian ISO dates (`YYYY-MM-DD`);
+ * this keeps the calendar easy to edit in one place.
+ */
+const assignmentDeadlineOverrides: Record<string, string> = {
+  "homework-1": "2026-10-25", // Aban 3, 1405
+  "project-phase-1": "2026-11-06", // Aban 15, 1405
+  "homework-2": "2026-11-08", // Aban 17, 1405
+  "homework-3": "2026-11-22", // Azar 1, 1405
+  "project-phase-2": "2026-12-11", // Azar 11, 1405
+  "homework-6": "2027-01-03", // Dey 13, 1405
+  "project-phase-3": "2027-02-05", // Bahman 16, 1405
+};
+
+/** Published release-date overrides. Use Gregorian ISO dates (`YYYY-MM-DD`). */
+const assignmentReleaseOverrides: Record<string, string> = {
+  "project-phase-2": "2026-11-06", // Aban 15, 1405
+  "project-phase-3": "2026-12-11", // Azar 20, 1405
+  "homework-6": "2026-12-20", // Azar 29, 1405
 };
 
 function toIsoUtcDay(ms: number): string {
@@ -43,17 +65,18 @@ function toIsoUtcDay(ms: number): string {
   return `${y}-${m}-${day}`;
 }
 
-function lerpDate(index: number, count: number): string {
-  if (count <= 1) return toIsoUtcDay(TERM_START);
-  const t = index / (count - 1);
-  return toIsoUtcDay(TERM_START + t * (TERM_END - TERM_START));
+function sessionDate(index: number): string {
+  return toIsoUtcDay(
+    TERM_START +
+      Math.floor(index / 2) * 7 * 24 * 60 * 60 * 1000 +
+      (index % 2) * 2 * 24 * 60 * 60 * 1000,
+  );
 }
 
 function addDaysIso(iso: string, days: number): string {
   const [y, m, d] = iso.split("-").map(Number);
   const ms = Date.UTC(y, m - 1, d) + days * 24 * 60 * 60 * 1000;
-  const clamped = Math.min(ms, TERM_END);
-  return toIsoUtcDay(clamped);
+  return toIsoUtcDay(ms);
 }
 
 function workshopInstructorName(instructorId: string | undefined): string | undefined {
@@ -75,15 +98,20 @@ const workshopsByLecture = new Map(
 
 const rows: ScheduleEntry[] = [];
 let sortOrder = 0;
+let sessionIndex = 0;
 
-publishedLectures.forEach((lecture, index) => {
-  const date = lerpDate(index, publishedLectures.length);
+publishedLectures.forEach((lecture) => {
+  const sessionCount = lecture.sessions ?? 1;
+  for (let session = 0; session < sessionCount; session += 1) {
+    const date = sessionDate(sessionIndex++);
+    const sessionLabel =
+      sessionCount > 1 ? ` (Session ${session + 1} of ${sessionCount})` : "";
 
   rows.push({
-    id: `lecture-${lecture.slug}`,
+    id: `lecture-${lecture.slug}-${session + 1}`,
     slug: lecture.slug,
     date,
-    title: lecture.title,
+    title: `${lecture.title}${sessionLabel}`,
     week: lecture.week,
     type: "lecture",
     instructor: lecture.presenter,
@@ -93,8 +121,8 @@ publishedLectures.forEach((lecture, index) => {
     publish: true,
   });
 
-  const workshop = workshopsByLecture.get(lecture.slug);
-  if (workshop || lecture.workshop) {
+  const workshop = session === 0 ? workshopsByLecture.get(lecture.slug) : undefined;
+  if (workshop || (session === 0 && lecture.workshop)) {
     const workshopSlug = workshop?.slug ?? `${lecture.slug}-workshop`;
     const title = workshop?.title ?? lecture.workshop!;
     rows.push({
@@ -113,7 +141,7 @@ publishedLectures.forEach((lecture, index) => {
     });
   }
 
-  const assignmentSlug = assignmentByLectureSlug[lecture.slug];
+  const assignmentSlug = session === 0 ? assignmentByLectureSlug[lecture.slug] : undefined;
   if (!assignmentSlug) {
     return;
   }
@@ -126,8 +154,10 @@ publishedLectures.forEach((lecture, index) => {
   }
 
   const kindLabel = assignment.kind === "project" ? "Project" : "Homework";
-  const releaseDate = date;
-  const deadlineDate = addDaysIso(date, assignment.kind === "project" ? 21 : 14);
+  const releaseDate = assignmentReleaseOverrides[assignment.slug] ?? date;
+  const deadlineDate =
+    assignmentDeadlineOverrides[assignment.slug] ??
+    addDaysIso(date, assignment.kind === "project" ? 21 : 14);
 
   rows.push({
     id: `release-${assignment.slug}`,
@@ -144,20 +174,47 @@ publishedLectures.forEach((lecture, index) => {
     publish: true,
   });
 
-  rows.push({
-    id: `deadline-${assignment.slug}`,
-    slug: `deadline-${assignment.slug}`,
-    date: deadlineDate,
-    title: `${kindLabel} deadline: ${assignment.title}`,
-    week: lecture.week,
-    type: "deadline",
-    instructor: undefined,
-    description: "Provisional deadline — replace when official due dates are published.",
-    assignmentIds: [assignment.slug],
-    lectureIds: [lecture.slug],
+  if (assignment.slug !== "project-orientation") {
+    rows.push({
+      id: `deadline-${assignment.slug}`,
+      slug: `deadline-${assignment.slug}`,
+      date: deadlineDate,
+      title: `${kindLabel} deadline: ${assignment.title}`,
+      week: lecture.week,
+      type: "deadline",
+      instructor: undefined,
+      description: "Provisional deadline — replace when official due dates are published.",
+      assignmentIds: [assignment.slug],
+      lectureIds: [lecture.slug],
+      order: sortOrder++,
+      publish: true,
+    });
+  }
+  }
+});
+
+// Final project presentations are meetings, not assignment records.
+rows.push(
+  {
+    id: "final-project-presentation-1",
+    slug: "final-project-presentation-1",
+    date: "2027-02-06", // 17 Bahman 1405
+    title: "Final project presentations (Day 1)",
+    type: "other",
+    description: "Final project presentation meeting.",
     order: sortOrder++,
     publish: true,
-  });
-});
+  },
+  {
+    id: "final-project-presentation-2",
+    slug: "final-project-presentation-2",
+    date: "2027-02-07", // 18 Bahman 1405
+    title: "Final project presentations (Day 2)",
+    type: "other",
+    description: "Final project presentation meeting.",
+    order: sortOrder++,
+    publish: true,
+  },
+);
 
 export const schedule: ScheduleEntry[] = rows;

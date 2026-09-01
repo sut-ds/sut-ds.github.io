@@ -228,6 +228,11 @@ const rows: Row[] = [
   },
 ];
 
+// Allocated meetings from the revised syllabus spreadsheet, in row order.
+const sessionsByRow = [
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1,
+];
+
 function weekFromSection(section: string): number | undefined {
   const match = section.match(/^\d+/);
   return match ? Number(match[0]) : undefined;
@@ -237,6 +242,7 @@ export const lectures: Lecture[] = rows.map((row, index) => ({
   slug: `${String(index + 1).padStart(2, "0")}-${slugify(row.title)}`,
   title: row.title,
   publish: true,
+  sessions: sessionsByRow[index] ?? 1,
   order: index + 1,
   week: weekFromSection(row.section),
   summary: row.notes,

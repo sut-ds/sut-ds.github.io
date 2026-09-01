@@ -5,12 +5,17 @@ import { OnThisPage } from "@/components/foundation/OnThisPage";
 import { Prose } from "@/components/foundation/Prose";
 import { TextLink } from "@/components/foundation/TextLink";
 import { getChrome, getCourse, getStaffByRole, getSyllabus } from "@/lib/content";
+import { generatePageMetadata } from "@/lib/metadata";
 
 import styles from "./syllabus.module.css";
 
-export const metadata: Metadata = {
-  title: "Syllabus",
-};
+const chrome = getChrome();
+
+export const metadata: Metadata = generatePageMetadata(
+  chrome.navLabels.syllabus,
+  chrome.pageSupportingSentences.syllabus,
+  "/syllabus/"
+);
 
 function asList(value: string | string[] | undefined): string[] {
   if (!value) return [];
@@ -38,10 +43,16 @@ export default function SyllabusPage() {
     { id: "next-steps", label: "Where to go next" },
   ].filter(Boolean) as Array<{ id: string; label: string }>;
 
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: chrome.navLabels.syllabus },
+  ];
+
   return (
     <ContentPage
       title={chrome.navLabels.syllabus}
       description={chrome.pageSupportingSentences.syllabus}
+      breadcrumbs={breadcrumbs}
     >
       <div className={styles.layout}>
         <OnThisPage items={onThisPage} />

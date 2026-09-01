@@ -15,17 +15,6 @@ function logo(slug: string, title: string) {
 
 export const assignments: Assignment[] = [
   {
-    slug: "project-orientation",
-    title: "Project orientation",
-    publish: true,
-    kind: "project",
-    order: 1,
-    status: "TBD",
-    logo: logo("project-orientation", "Project orientation"),
-    summary:
-      "Project orientation introduced with the course introduction. Details and milestones will be linked here as they are published.",
-  },
-  {
     slug: "homework-1",
     title: "Homework 1",
     number: 1,
@@ -36,6 +25,7 @@ export const assignments: Assignment[] = [
     logo: logo("homework-1", "Homework 1"),
     summary:
       "Data manipulation, visualization, and elementary inference (aligned with the data visualization module).",
+    taIds: ["hossein-soleimani"],
   },
   {
     slug: "project-phase-1",
@@ -47,6 +37,7 @@ export const assignments: Assignment[] = [
     logo: logo("project-phase-1", "Project Phase 1"),
     summary:
       "First project phase, aligned with ML dataflow — data processing (collection, cleaning, preprocessing, and feature preparation).",
+    taIds: ["kiarash-rashidi"],
   },
   {
     slug: "homework-2",
@@ -70,6 +61,7 @@ export const assignments: Assignment[] = [
     logo: logo("project-phase-2", "Project Phase 2"),
     summary:
       "Second project phase, aligned with unsupervised and semi-supervised learning topics.",
+    taIds: ["kiarash-rashidi"],
   },
   {
     slug: "homework-3",
@@ -81,6 +73,7 @@ export const assignments: Assignment[] = [
     status: "TBD",
     logo: logo("homework-3", "Homework 3"),
     summary: "Classical machine learning.",
+    taIds: ["darya-azaddel"],
   },
   {
     slug: "homework-4",
@@ -92,6 +85,7 @@ export const assignments: Assignment[] = [
     status: "TBD",
     logo: logo("homework-4", "Homework 4"),
     summary: "Causality and deep learning and transformers.",
+    taIds: ["mohammad-hossein-momeni", "ali-rezaei"],
   },
   {
     slug: "homework-5",
@@ -114,8 +108,8 @@ export const assignments: Assignment[] = [
     order: 9,
     status: "TBD",
     logo: logo("homework-6", "Homework 6"),
-    summary:
-      "Time-series Forecasting.",
+    summary: "Time-series Forecasting.",
+    taIds: ["amir-reza-azari", "saba-atashfaraz"],
   },
   {
     slug: "project-phase-3",
@@ -126,16 +120,6 @@ export const assignments: Assignment[] = [
     status: "TBD",
     logo: logo("project-phase-3", "Project Phase 3"),
     summary: "Third project phase, aligned with the ML pipeline module.",
-  },
-  {
-    slug: "final-project-presentation",
-    title: "Final project presentation",
-    publish: true,
-    kind: "project",
-    order: 11,
-    status: "TBD",
-    logo: logo("final-project-presentation", "Final project presentation"),
-    summary:
-      "Final project presentation, aligned with the monitoring / lifecycle module at the end of the sequence.",
+    taIds: ["kiarash-rashidi"],
   },
 ];

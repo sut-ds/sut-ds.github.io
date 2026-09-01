@@ -5,21 +5,32 @@ import { ContentPage } from "@/components/foundation/ContentPage";
 import { EmptyState } from "@/components/foundation/EmptyState";
 import { TextLink } from "@/components/foundation/TextLink";
 import { getChrome, getPublishedSchedule } from "@/lib/content";
+import { generatePageMetadata } from "@/lib/metadata";
 
 import styles from "./schedule.module.css";
 
-export const metadata: Metadata = {
-  title: "Schedule",
-};
+const chrome = getChrome();
+
+export const metadata: Metadata = generatePageMetadata(
+  chrome.navLabels.schedule,
+  chrome.pageSupportingSentences.schedule,
+  "/schedule/"
+);
 
 export default function SchedulePage() {
   const chrome = getChrome();
   const entries = getPublishedSchedule();
 
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: chrome.navLabels.schedule },
+  ];
+
   return (
     <ContentPage
       title={chrome.navLabels.schedule}
       description={chrome.pageSupportingSentences.schedule}
+      breadcrumbs={breadcrumbs}
     >
       {entries.length === 0 ? (
         <EmptyState

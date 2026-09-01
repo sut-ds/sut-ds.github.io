@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 
+import { Breadcrumb, type BreadcrumbItem } from "@/components/foundation/Breadcrumb";
 import { Container } from "@/components/foundation/Container";
 import { PageHeader } from "@/components/foundation/PageHeader";
 
@@ -10,6 +11,7 @@ type ContentPageProps = {
   description: string;
   actions?: ReactNode;
   children?: ReactNode;
+  breadcrumbs?: BreadcrumbItem[];
 };
 
 export function ContentPage({
@@ -17,9 +19,13 @@ export function ContentPage({
   description,
   actions,
   children,
+  breadcrumbs,
 }: ContentPageProps) {
   return (
     <Container className={styles.page}>
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <Breadcrumb items={breadcrumbs} />
+      )}
       <PageHeader title={title} description={description} actions={actions} />
       <div className={styles.body}>{children}</div>
     </Container>

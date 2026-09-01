@@ -40,9 +40,6 @@ export function ScheduleRow({
 
       <article className={styles.body}>
         <div className={styles.meta}>
-          {entry.week != null ? (
-            <span className={styles.week}>Week {entry.week}</span>
-          ) : null}
           {dateLabel ? (
             <span className={styles.date}>{dateLabel}</span>
           ) : (
