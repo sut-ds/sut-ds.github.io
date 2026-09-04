@@ -2,7 +2,7 @@ import { MaterialLinks } from "@/components/collection/MaterialLinks";
 import { TextLink } from "@/components/foundation/TextLink";
 import { cx } from "@/lib/cx";
 import { formatDisplayDate } from "@/lib/content/dates";
-import type { Lecture } from "@/types/content";
+import type { Lecture, Resource } from "@/types/content";
 
 import styles from "./LectureRow.module.css";
 import type { RelatedLink } from "./ScheduleRow";
@@ -11,6 +11,7 @@ type LectureRowProps = {
   lecture: Lecture;
   href?: string;
   relatedAssignmentLinks?: RelatedLink[];
+  relatedResources?: Resource[];
   presenterHref?: string;
   workshopHref?: string;
   isLast?: boolean;
@@ -21,6 +22,7 @@ export function LectureRow({
   lecture,
   href,
   relatedAssignmentLinks = [],
+  relatedResources = [],
   presenterHref,
   workshopHref,
   isLast = false,
@@ -40,15 +42,11 @@ export function LectureRow({
       </div>
 
       <article className={styles.body}>
-        <div className={styles.meta}>
-          {lecture.week != null ? (
-            <span className={styles.week}>Week {lecture.week}</span>
-          ) : null}
-          {dateLabel ? <span className={styles.date}>{dateLabel}</span> : null}
-          {lecture.week == null && !dateLabel ? (
-            <span className={styles.week}>Session</span>
-          ) : null}
-        </div>
+        {dateLabel ? (
+          <div className={styles.meta}>
+            <span className={styles.date}>{dateLabel}</span>
+          </div>
+        ) : null}
 
         <h2 className={styles.title}>
           {href ? <TextLink href={href}>{lecture.title}</TextLink> : lecture.title}
@@ -92,6 +90,22 @@ export function LectureRow({
             {relatedAssignmentLinks.map((link) => (
               <li key={`${link.href}-${link.label}`}>
                 <TextLink href={link.href}>{link.label}</TextLink>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+
+        {relatedResources.length > 0 ? (
+          <ul className={styles.related} aria-label="Related resources">
+            {relatedResources.map((resource) => (
+              <li key={resource.id}>
+                <TextLink
+                  href={resource.href}
+                  variant={resource.external === false ? "internal" : "external"}
+                  external={resource.external !== false}
+                >
+                  {resource.title}
+                </TextLink>
               </li>
             ))}
           </ul>

@@ -121,6 +121,7 @@ export type Lecture = {
   materials?: Material[];
   readings?: Reading[];
   assignmentIds?: string[];
+  resourceIds?: string[];
   scheduleEntryId?: string;
   order?: number;
 };
@@ -167,6 +168,8 @@ export type Assignment = {
   publish: boolean;
   number?: number;
   kind?: AssignmentKind;
+  /** Published release date, derived from the schedule when available. */
+  releaseAt?: string;
   dueAt?: string;
   summary?: string;
   body?: string;

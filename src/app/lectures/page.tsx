@@ -7,6 +7,7 @@ import { EmptyState } from "@/components/foundation/EmptyState";
 import {
   getAssignmentsByIds,
   getChrome,
+  getResourcesByIds,
   getPublishedLectures,
   getPublishedStaff,
   getWorkshopByLectureId,
@@ -82,6 +83,7 @@ export default function LecturesPage() {
                   href: `/assignments#${assignment.slug}`,
                   label: assignment.title,
                 }))}
+                relatedResources={getResourcesByIds(lecture.resourceIds)}
               />
             );
           })}

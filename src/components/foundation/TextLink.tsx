@@ -40,7 +40,10 @@ export function TextLink({
       >
         {children}
         <span className={styles.externalIndicator} aria-hidden="true">
-          ↗
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M14 3h7v7M21 3 10 14" />
+            <path d="M18 13v8H3V6h8" />
+          </svg>
         </span>
         <span className="visually-hidden"> (opens in new tab)</span>
       </a>

@@ -137,7 +137,7 @@ export const resources: Resource[] = [
   {
     id: "karpathy-zero-to-hero",
     slug: "andrej-karpathy-zero-to-hero",
-    title: "Andrej Karpathy — Neural Networks: Zero to Hero",
+    title: "Neural Networks: Zero to Hero — Andrej Karpathy",
     href: "https://karpathy.ai/zero-to-hero.html",
     category: "courses",
     publish: true,
@@ -148,7 +148,7 @@ export const resources: Resource[] = [
   {
     id: "karpathy-nn-zero-to-hero-github",
     slug: "andrej-karpathy-nn-zero-to-hero-github",
-    title: "Andrej Karpathy — nn-zero-to-hero (notebooks)",
+    title: "Zero to Hero notebooks — Andrej Karpathy",
     href: "https://github.com/karpathy/nn-zero-to-hero",
     category: "courses",
     publish: true,
@@ -159,7 +159,7 @@ export const resources: Resource[] = [
   {
     id: "karpathy-zero-to-hero-playlist",
     slug: "andrej-karpathy-zero-to-hero-playlist",
-    title: "Andrej Karpathy — Zero to Hero (YouTube playlist)",
+    title: "Zero to Hero video lectures — Andrej Karpathy",
     href: "https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ",
     category: "courses",
     publish: true,

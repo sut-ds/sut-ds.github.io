@@ -45,7 +45,9 @@ export function WorkshopRow({
         <header className={styles.header}>
           <div className={styles.identity}>
             <p className={styles.kicker}>
-              {workshop.week != null ? `Lab · Week ${workshop.week}` : "Hands-on lab"}
+              {relatedLecture?.order != null
+                ? `Lab · Lecture ${relatedLecture.order}`
+                : "Hands-on lab"}
             </p>
             <h2 className={styles.title} id={`${workshop.slug}-title`}>
               {workshop.title}

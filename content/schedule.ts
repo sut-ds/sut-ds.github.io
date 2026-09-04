@@ -129,7 +129,7 @@ publishedLectures.forEach((lecture) => {
       id: `workshop-${lecture.slug}`,
       slug: workshopSlug,
       date,
-      title: `Workshop: ${title}`,
+      title,
       week: lecture.week,
       type: "workshop",
       instructor: workshopInstructorName(workshop?.instructorId),
@@ -153,7 +153,6 @@ publishedLectures.forEach((lecture) => {
     return;
   }
 
-  const kindLabel = assignment.kind === "project" ? "Project" : "Homework";
   const releaseDate = assignmentReleaseOverrides[assignment.slug] ?? date;
   const deadlineDate =
     assignmentDeadlineOverrides[assignment.slug] ??
@@ -163,7 +162,7 @@ publishedLectures.forEach((lecture) => {
     id: `release-${assignment.slug}`,
     slug: `release-${assignment.slug}`,
     date: releaseDate,
-    title: `${kindLabel} release: ${assignment.title}`,
+    title: assignment.title,
     week: lecture.week,
     type: "release",
     instructor: undefined,
@@ -179,7 +178,7 @@ publishedLectures.forEach((lecture) => {
       id: `deadline-${assignment.slug}`,
       slug: `deadline-${assignment.slug}`,
       date: deadlineDate,
-      title: `${kindLabel} deadline: ${assignment.title}`,
+      title: assignment.title,
       week: lecture.week,
       type: "deadline",
       instructor: undefined,

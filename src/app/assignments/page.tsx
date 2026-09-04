@@ -132,6 +132,7 @@ export default function AssignmentsPage() {
                       <tr>
                         <th scope="col">Work</th>
                         <th scope="col">Type</th>
+                        <th scope="col">Release</th>
                         <th scope="col">Deadline</th>
                       </tr>
                     </thead>
@@ -150,9 +151,21 @@ export default function AssignmentsPage() {
                             {overviewKind(item)}
                           </td>
                           <td className={styles.dueCell}>
+                            {item.releaseAt ? (
+                              <DeadlineText
+                                dueAt={item.releaseAt}
+                                prefix=""
+                                emphasis="neutral"
+                              />
+                            ) : (
+                              <StatusLabel variant="neutral">TBD</StatusLabel>
+                            )}
+                          </td>
+                          <td className={styles.dueCell}>
                             {item.dueAt ? (
                               <DeadlineText
                                 dueAt={item.dueAt}
+                                prefix=""
                                 emphasis={deadlineEmphasis(item.dueAt)}
                               />
                             ) : (

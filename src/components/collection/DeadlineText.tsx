@@ -1,5 +1,5 @@
 import { cx } from "@/lib/cx";
-import { formatDeadline } from "@/lib/content/dates";
+import { formatPersianDate } from "@/lib/content/dates";
 
 import styles from "./DeadlineText.module.css";
 
@@ -19,14 +19,14 @@ export function DeadlineText({
   className,
   prefix = "Due",
 }: DeadlineTextProps) {
-  const display = label ?? formatDeadline(dueAt);
+  const display = label ?? formatPersianDate(dueAt);
 
   return (
     <time
       className={cx(styles.text, styles[emphasis], className)}
       dateTime={dueAt}
     >
-      {prefix} {display}
+      {prefix ? `${prefix} ${display}` : display}
     </time>
   );
 }

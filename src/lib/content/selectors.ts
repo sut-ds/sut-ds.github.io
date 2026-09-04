@@ -85,9 +85,29 @@ export function getLectureBySlug(slug: string): Lecture | undefined {
 }
 
 export function getPublishedAssignments(): Assignment[] {
+  const deadlines = new Map(
+    content.schedule
+      .filter((entry) => entry.publish && entry.type === "deadline" && entry.assignmentIds?.[0])
+      .map((entry) => [entry.assignmentIds![0], entry.date] as const),
+  );
+  const releases = new Map(
+    content.schedule
+      .filter((entry) => entry.publish && entry.type === "release" && entry.assignmentIds?.[0])
+      .map((entry) => [entry.assignmentIds![0], entry.date] as const),
+  );
+
   return content.assignments
     .filter((assignment) => assignment.publish)
     .slice()
+    .map((assignment) => {
+      const scheduleDeadline = deadlines.get(assignment.slug);
+      const scheduleRelease = releases.get(assignment.slug);
+      return {
+        ...assignment,
+        ...(scheduleRelease && !assignment.releaseAt ? { releaseAt: scheduleRelease } : {}),
+        ...(scheduleDeadline && !assignment.dueAt ? { dueAt: scheduleDeadline } : {}),
+      };
+    })
     .sort(byOrderThenTitle);
 }
 

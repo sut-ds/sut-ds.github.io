@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { ScheduleTable } from "@/components/collection/ScheduleTable";
+import { ScheduleCards } from "@/components/collection/ScheduleCards";
 import { ContentPage } from "@/components/foundation/ContentPage";
 import { EmptyState } from "@/components/foundation/EmptyState";
 import { TextLink } from "@/components/foundation/TextLink";
@@ -67,7 +67,7 @@ export default function SchedulePage() {
             </p>
           </aside>
 
-          <ScheduleTable entries={entries} />
+          <ScheduleCards entries={entries} />
         </>
       )}
     </ContentPage>

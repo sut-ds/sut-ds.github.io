@@ -1,9 +1,4 @@
-import {
-  DeadlineText,
-  deadlineEmphasis,
-} from "@/components/collection/DeadlineText";
 import { MaterialLinks } from "@/components/collection/MaterialLinks";
-import { StatusLabel } from "@/components/foundation/StatusLabel";
 import { TextLink } from "@/components/foundation/TextLink";
 import { cx } from "@/lib/cx";
 import type { Assignment, StaffMember } from "@/types/content";
@@ -31,15 +26,6 @@ function kindLabel(assignment: Assignment): string {
   return "Assignment";
 }
 
-function statusVariant(
-  status: Assignment["status"],
-): "brand" | "accent" | "warm" | "neutral" {
-  if (status === "open") return "accent";
-  if (status === "upcoming") return "brand";
-  if (status === "closed") return "neutral";
-  return "neutral";
-}
-
 export function AssignmentRow({
   assignment,
   href,
@@ -50,10 +36,6 @@ export function AssignmentRow({
 }: AssignmentRowProps) {
   const hasMaterials = Boolean(assignment.materials && assignment.materials.length > 0);
   const hasLogo = Boolean(assignment.logo?.src);
-  const showStatus =
-    Boolean(assignment.status) &&
-    assignment.status !== "TBD" &&
-    !(assignment.status === "upcoming" && !assignment.dueAt);
   const railLabel =
     indexLabel ??
     (assignment.number != null
@@ -92,21 +74,6 @@ export function AssignmentRow({
           <div className={styles.heading}>
             <p className={styles.kind}>{kindLabel(assignment)}</p>
             <h3 className={styles.title}>{title}</h3>
-          </div>
-          <div className={styles.deadline}>
-            {assignment.dueAt ? (
-              <DeadlineText
-                dueAt={assignment.dueAt}
-                emphasis={deadlineEmphasis(assignment.dueAt)}
-              />
-            ) : (
-              <StatusLabel variant="neutral">Deadline TBD</StatusLabel>
-            )}
-            {showStatus ? (
-              <StatusLabel variant={statusVariant(assignment.status)}>
-                {assignment.status}
-              </StatusLabel>
-            ) : null}
           </div>
         </div>
 

@@ -73,7 +73,6 @@
   margin-bottom: var(--space-2);
 }
 
-.week,
 .date {
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);

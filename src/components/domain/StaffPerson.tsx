@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 import { TextLink } from "@/components/foundation/TextLink";
 import { cx } from "@/lib/cx";
 import type { StaffMember } from "@/types/content";
@@ -23,6 +27,14 @@ function initialsFromName(name: string): string {
   return `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase();
 }
 
+function avatarToneFromId(id: string): string {
+  let hash = 0;
+  for (const character of id) {
+    hash = (hash * 31 + character.charCodeAt(0)) | 0;
+  }
+  return `avatarTone${Math.abs(hash) % 4}`;
+}
+
 function telegramHref(telegram: string): string {
   const trimmed = telegram.trim();
   if (/^https?:\/\//i.test(trimmed)) {
@@ -42,6 +54,7 @@ function telegramLabel(telegram: string): string {
 
 export function StaffPerson({ person, className }: StaffPersonProps) {
   const initials = initialsFromName(person.name);
+  const [imageFailed, setImageFailed] = useState(false);
   const hasContact = Boolean(
     person.email ||
       person.telegram ||
@@ -52,7 +65,7 @@ export function StaffPerson({ person, className }: StaffPersonProps) {
 
   return (
     <article className={cx(styles.person, className)} id={person.slug}>
-      {person.photo ? (
+      {person.photo && !imageFailed ? (
         // eslint-disable-next-line @next/next/no-img-element -- optional staff photos; static-export friendly
         <img
           className={styles.photo}
@@ -62,9 +75,13 @@ export function StaffPerson({ person, className }: StaffPersonProps) {
           height={96}
           loading="lazy"
           decoding="async"
+          onError={() => setImageFailed(true)}
         />
       ) : (
-        <div className={styles.avatar} aria-hidden="true">
+        <div
+          className={cx(styles.avatar, styles[avatarToneFromId(person.id)])}
+          aria-hidden="true"
+        >
           {initials}
         </div>
       )}
