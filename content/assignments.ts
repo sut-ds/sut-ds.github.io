@@ -50,6 +50,7 @@ export const assignments: Assignment[] = [
     logo: logo("homework-2", "Homework 2"),
     summary:
       "Web scraping, database population, probability and statistics, and regression.",
+    taIds: ["mohammadali-naderi"],
   },
   {
     slug: "project-phase-2",

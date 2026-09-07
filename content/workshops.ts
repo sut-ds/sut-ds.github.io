@@ -48,16 +48,12 @@ const workshopOverrides: Record<
     >
   >
 > = {
-  // Example (uncomment when ready):
-  // "01-course-introduction": {
-  //   instructorId: "mohammad-eshtehardian",
-  //   video: {
-  //     label: "Recording",
-  //     href: "https://example.com/workshop-01",
-  //     kind: "video",
-  //     external: true,
-  //   },
-  // },
+  "04-databases-lecture-and-coordination": {
+    instructorId: "shahab-hosseini",
+  },
+  "12-causality": {
+    instructorId: "pooya-gholami",
+  },
 };
 
 const publishedLecturesWithWorkshop = lectures

@@ -25,15 +25,15 @@ const TERM_START = Date.UTC(2026, 8, 27); // Sunday, 27 Sep 2026
 
 /** Syllabus-aligned assignment timing (lecture slug → assignment slug). */
 const assignmentByLectureSlug: Record<string, string> = {
-  "05-data-visualization-revised": "homework-1",
-  "06-ml-dataflow-part-1-data-processing-revised": "project-phase-1",
+  "05-data-visualization": "homework-1",
+  "06-ml-dataflow-part-1-data-processing": "project-phase-1",
   "09-regression": "homework-2",
   "11-unsupervised-and-semi-supervised-learning": "project-phase-2",
   "12-causality": "homework-3",
   "16-transformers-foundations-and-architectures": "homework-4",
   "19-diffusion-models": "homework-5",
   "20-modern-time-series-modeling-with-transformers": "homework-6",
-  "22-ml-dataflow-part-4-pipeline-revised": "project-phase-3",
+  "22-ml-dataflow-part-4-pipeline": "project-phase-3",
 };
 
 /**
