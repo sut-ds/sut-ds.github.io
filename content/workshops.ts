@@ -35,21 +35,33 @@
 import { lectures } from "./lectures";
 import type { Workshop } from "@/types/content";
 
+type WorkshopOverride = Partial<
+  Pick<
+    Workshop,
+    | "title"
+    | "summary"
+    | "instructorId"
+    | "date"
+    | "video"
+    | "materials"
+    | "publish"
+  >
+>;
+
 /**
  * Optional overrides keyed by lecture slug.
- * Use to set instructorId, video, materials, or custom title/summary.
+ * Use this table to add, remove, or edit workshop details without changing
+ * the lecture sequence. Use an array to publish multiple workshops for one
+ * lecture. Dates stay TBD unless an override publishes one.
  */
-const workshopOverrides: Record<
-  string,
-  Partial<
-    Pick<
-      Workshop,
-      "title" | "summary" | "instructorId" | "video" | "materials" | "publish"
-    >
-  >
-> = {
-  "04-databases-lecture-and-coordination": {
-    instructorId: "shahab-hosseini",
+const workshopOverrides: Record<string, WorkshopOverride | WorkshopOverride[]> = {
+  "02-course-introduction": { instructorId: "mohammadali-naderi" },
+  "04-databases": [
+    { instructorId: "shahab-hosseini" },
+    { title: "Docker", instructorId: "shahab-hosseini" },
+  ],
+  "17-building-a-small-language-model": {
+    instructorId: "kiarash-rashidi",
   },
   "12-causality": {
     instructorId: "pooya-gholami",
@@ -61,16 +73,25 @@ const publishedLecturesWithWorkshop = lectures
   .slice()
   .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
-export const workshops: Workshop[] = publishedLecturesWithWorkshop.map(
-  (lecture, index) => {
-    const override = workshopOverrides[lecture.slug] ?? {};
-    return {
-      slug: `${lecture.slug}-workshop`,
+let nextWorkshopOrder = 1;
+
+export const workshops: Workshop[] = publishedLecturesWithWorkshop.flatMap(
+  (lecture) => {
+    const configuredOverrides = workshopOverrides[lecture.slug];
+    const overrides = Array.isArray(configuredOverrides)
+      ? configuredOverrides
+      : [configuredOverrides ?? {}];
+
+    return overrides.map((override, workshopIndex) => ({
+      slug:
+        workshopIndex === 0
+          ? `${lecture.slug}-workshop`
+          : `${lecture.slug}-workshop-${workshopIndex + 1}`,
       title: override.title ?? lecture.workshop!,
       publish: override.publish ?? true,
-      order: index + 1,
+      order: nextWorkshopOrder++,
       week: lecture.week,
-      date: lecture.date,
+      date: override.date,
       lectureId: lecture.slug,
       summary:
         override.summary ??
@@ -78,6 +99,6 @@ export const workshops: Workshop[] = publishedLecturesWithWorkshop.map(
       instructorId: override.instructorId,
       video: override.video,
       materials: override.materials,
-    };
+    }));
   },
 );

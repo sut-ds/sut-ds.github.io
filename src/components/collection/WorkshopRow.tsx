@@ -54,22 +54,25 @@ export function WorkshopRow({
             </h2>
           </div>
 
-          <div className={styles.instructor}>
+          <div className={styles.instructor} aria-label="Workshop instructor">
             {instructor ? (
               <>
                 <span className={styles.avatar} aria-hidden="true">
                   {initialsFromName(instructor.name)}
                 </span>
                 <div className={styles.instructorText}>
-                  <span className={styles.instructorLabel}>Led by</span>
-                  <TextLink href={`/staff#${instructor.slug}`}>
+                  <span className={styles.instructorLabel}>Workshop instructor</span>
+                  <TextLink
+                    href={`/staff#${instructor.slug}`}
+                    className={styles.instructorName}
+                  >
                     {instructor.name}
                   </TextLink>
                 </div>
               </>
             ) : (
               <div className={styles.instructorText}>
-                <span className={styles.instructorLabel}>Led by</span>
+                <span className={styles.instructorLabel}>Workshop instructor</span>
                 <StatusLabel variant="neutral">TA TBD</StatusLabel>
               </div>
             )}

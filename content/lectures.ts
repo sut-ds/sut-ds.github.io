@@ -66,15 +66,15 @@ const rows: Row[] = [
   },
   {
     section: "0",
-    title: "Course Introduction (tools)",
+    title: "Course Introduction",
     workshop: "NumPy and Pandas",
-    notes: "Data-science environment and essential tools.",
+    notes: "Data-science in production and buisness contexts.",
     presenter: "Dr. Babak Hossein Khalaj",
     resourceIds: ["numpy", "pandas"],
   },
   {
     section: "1",
-    title: "Data Models (Summary)",
+    title: "Data Models",
     workshop: "Matplotlib and Seaborn",
     notes: "Foundations of data representation and modeling.",
     presenter: "Dr. Babak Hossein Khalaj",
@@ -82,7 +82,7 @@ const rows: Row[] = [
   },
   {
     section: "2",
-    title: "Databases (Lecture and Coordination)",
+    title: "Databases",
     workshop: "SQL",
     notes: "Relational databases, querying, and data acquisition.",
     presenter: "Dr. Babak Hossein Khalaj",
@@ -108,13 +108,13 @@ const rows: Row[] = [
     section: "4",
     title: "Probability and Statistics",
     workshop: "—",
-    notes: "Statistical learning foundations; based primarily on Tibshirani et al.",
+    notes: "Review on probability and statistics; based primarily on Tibshirani et al.",
     presenter: "Dr. Amir Hossein Saberi",
     resourceIds: ["isl"],
   },
   {
     section: "4",
-    title: "Probability and Statistics (continued)",
+    title: "Probability and Statistics",
     workshop: "—",
     notes:
       "Probability, estimation, uncertainty, and elementary inference for statistical learning.",
@@ -228,7 +228,7 @@ const rows: Row[] = [
     notes:
       "Moved after transformers and generative models to use the required neural-sequence foundations; based on recent transformer-based time-series papers.",
     presenter: "Dr. Amir Hossein Saberi",
-    resourceIds: ["levine-cs182"],
+    resourceIds: ["timesfm-das-kong-sen-2023", "chronos-ansari-stella-2024"],
   },
   {
     section: "15",

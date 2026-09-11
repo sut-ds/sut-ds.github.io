@@ -37,7 +37,7 @@ export const assignments: Assignment[] = [
     logo: logo("project-phase-1", "Project Phase 1"),
     summary:
       "First project phase, aligned with ML dataflow — data processing (collection, cleaning, preprocessing, and feature preparation).",
-    taIds: ["kiarash-rashidi"],
+    taIds: ["kiarash-rashidi", "iman-alizadeh-fakouri", "sahar-semsarha"],
   },
   {
     slug: "homework-2",
@@ -62,7 +62,7 @@ export const assignments: Assignment[] = [
     logo: logo("project-phase-2", "Project Phase 2"),
     summary:
       "Second project phase, aligned with unsupervised and semi-supervised learning topics.",
-    taIds: ["kiarash-rashidi"],
+    taIds: ["kiarash-rashidi", "iman-alizadeh-fakouri", "sahar-semsarha"],
   },
   {
     slug: "homework-3",
@@ -98,7 +98,7 @@ export const assignments: Assignment[] = [
     status: "TBD",
     logo: logo("homework-5", "Homework 5"),
     summary: "Generative and diffusion models.",
-    taIds: ["mohammad-eshtehardian"],
+    taIds: ["mohammad-eshtehardian", "aida-aryafar"],
   },
   {
     slug: "homework-6",
@@ -121,6 +121,6 @@ export const assignments: Assignment[] = [
     status: "TBD",
     logo: logo("project-phase-3", "Project Phase 3"),
     summary: "Third project phase, aligned with the ML pipeline module.",
-    taIds: ["kiarash-rashidi"],
+    taIds: ["kiarash-rashidi", "iman-alizadeh-fakouri", "sahar-semsarha"],
   },
 ];

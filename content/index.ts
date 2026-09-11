@@ -6,10 +6,10 @@ import { course } from "./course";
 import { faq } from "./faq";
 import { lectures } from "./lectures";
 import { resources } from "./resources";
-import { schedule } from "./schedule";
 import { staff } from "./staff";
 import { syllabus } from "./syllabus";
 import { workshops } from "./workshops";
+import { schedule } from "./schedule";
 
 import type { CourseContent } from "@/types/content";
 

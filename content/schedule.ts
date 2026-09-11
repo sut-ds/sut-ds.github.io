@@ -14,7 +14,7 @@ import { assignments } from "./assignments";
 import { lectures } from "./lectures";
 import { staff } from "./staff";
 import { workshops } from "./workshops";
-import type { ScheduleEntry } from "@/types/content";
+import type { ScheduleEntry, Workshop } from "@/types/content";
 
 /**
  * Schedule settings — edit these values when the calendar changes.
@@ -85,16 +85,22 @@ function workshopInstructorName(instructorId: string | undefined): string | unde
     ?.name;
 }
 
+type ScheduledWorkshop = Pick<Workshop, "slug" | "title"> &
+  Partial<Pick<Workshop, "summary" | "instructorId">>;
+
 const publishedLectures = lectures
   .filter((lecture) => lecture.publish)
   .slice()
   .sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
-const workshopsByLecture = new Map(
-  workshops
-    .filter((workshop) => workshop.publish)
-    .map((workshop) => [workshop.lectureId, workshop] as const),
-);
+const workshopsByLecture = new Map<string, ScheduledWorkshop[]>();
+workshops
+  .filter((workshop) => workshop.publish)
+  .forEach((workshop) => {
+    const lectureWorkshops = workshopsByLecture.get(workshop.lectureId ?? "") ?? [];
+    lectureWorkshops.push(workshop);
+    workshopsByLecture.set(workshop.lectureId ?? "", lectureWorkshops);
+  });
 
 const rows: ScheduleEntry[] = [];
 let sortOrder = 0;
@@ -121,25 +127,28 @@ publishedLectures.forEach((lecture) => {
     publish: true,
   });
 
-  const workshop = session === 0 ? workshopsByLecture.get(lecture.slug) : undefined;
-  if (workshop || (session === 0 && lecture.workshop)) {
-    const workshopSlug = workshop?.slug ?? `${lecture.slug}-workshop`;
-    const title = workshop?.title ?? lecture.workshop!;
+  const lectureWorkshops = session === 0 ? workshopsByLecture.get(lecture.slug) ?? [] : [];
+  const workshopsForSchedule: ScheduledWorkshop[] = lectureWorkshops.length > 0
+    ? lectureWorkshops
+    : session === 0 && lecture.workshop
+      ? [{ title: lecture.workshop, slug: `${lecture.slug}-workshop` }]
+      : [];
+  workshopsForSchedule.forEach((workshop) => {
     rows.push({
       id: `workshop-${lecture.slug}`,
-      slug: workshopSlug,
+      slug: workshop.slug,
       date,
-      title,
+      title: workshop.title,
       week: lecture.week,
       type: "workshop",
-      instructor: workshopInstructorName(workshop?.instructorId),
+      instructor: workshopInstructorName(workshop.instructorId),
       description:
-        workshop?.summary ?? `Hands-on workshop paired with “${lecture.title}”.`,
+        workshop.summary ?? `Hands-on workshop paired with “${lecture.title}”.`,
       lectureIds: [lecture.slug],
       order: sortOrder++,
       publish: true,
     });
-  }
+  });
 
   const assignmentSlug = session === 0 ? assignmentByLectureSlug[lecture.slug] : undefined;
   if (!assignmentSlug) {

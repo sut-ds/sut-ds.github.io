@@ -167,6 +167,28 @@ export const resources: Resource[] = [
     external: true,
   },
   {
+    id: "timesfm-das-kong-sen-2023",
+    slug: "timesfm-das-kong-sen-2023",
+    title: "A decoder-only foundation model for time-series forecasting (TimesFM)",
+    href: "https://arxiv.org/abs/2310.10688",
+    category: "readings",
+    publish: true,
+    description:
+      "Introduces TimesFM, a patched decoder-only transformer foundation model designed for zero-shot time-series forecasting.",
+    external: true,
+  },
+  {
+    id: "chronos-ansari-stella-2024",
+    slug: "chronos-ansari-stella-2024",
+    title: "Chronos: Learning the Language of Time Series",
+    href: "https://arxiv.org/abs/2403.07815",
+    category: "readings",
+    publish: true,
+    description:
+      "Presents Chronos, a probabilistic forecasting framework that tokenizes time series and trains transformer language-model architectures for zero-shot prediction.",
+    external: true,
+  },
+  {
     id: "ddpm-ho-2020",
     slug: "ddpm-ho-jain-abbeel-2020",
     title: "Denoising Diffusion Probabilistic Models (Ho, Jain, Abbeel)",
