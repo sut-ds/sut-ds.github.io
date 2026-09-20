@@ -8,8 +8,9 @@
  * Photos: drop a square WebP/JPEG/PNG into `public/images/staff/`, then set:
  *   photo: { src: "/images/staff/<filename>", alt: "<Name>, <role>" }
  *
- * Add more TAs as separate entries with role: "ta", then reference their `id`
- * from assignment `taIds` in content/assignments.ts.
+ * Add more TAs with role: "ta", then reference their `id` from assignment
+ * `taIds` in content/assignments.ts and workshop `instructorId` in
+ * content/workshops.ts. Staff-page focus labels are derived from those links.
  */
 import type { StaffMember } from "@/types/content";
 
@@ -119,6 +120,32 @@ export const staff: StaffMember[] = [
     photo: { src: "/images/staff/amir-reza-azari.jpg", alt: "Amir Reza Azari" },
   },
   {
+    id: "soheil-sayahvarg",
+    slug: "soheil-sayahvarg",
+    name: "Soheil Sayahvarg",
+    role: "ta",
+    title: "Teaching Assistant",
+    publish: true,
+    order: 4,
+    bio: "BSc student of Computer Engineering, Software Engineering, Sharif University of Technology.",
+    email: "soheilsayahvarg@gmail.com",
+    // telegram: "@…",
+    photo: { src: "/images/staff/soheil-sayahvarg.jpg", alt: "Soheil Sayahvarg" },
+  },
+  {
+    id: "mohammad-mahdi-roshani",
+    slug: "mohammad-mahdi-roshani",
+    name: "Mohammad Mahdi Roshani",
+    role: "ta",
+    title: "Teaching Assistant",
+    publish: true,
+    order: 4,
+    bio: "BSc student of Electrical Engineering, Communications Systems, Sharif University of Technology.",
+    email: "roshanimhdi@gmail.com",
+    // telegram: "@…",
+    photo: { src: "/images/staff/mohammad-mahdi-roshani.jpg", alt: "Mohammad Mahdi Roshani" },
+  },
+  {
     id: "shahab-hosseini",
     slug: "shahab-hosseini",
     name: "Shahab Hosseini",
@@ -130,6 +157,19 @@ export const staff: StaffMember[] = [
     email: "s.hosseini306@gmail.com",
     // telegram: "@…",
     photo: { src: "/images/staff/shahab-hosseini.png", alt: "Shahab Hosseini" },
+  },
+  {
+    id: "parham-faizolahi",
+    slug: "parham-faizolahi",
+    name: "Parham Faizolahi",
+    role: "ta",
+    title: "Teaching Assistant",
+    publish: true,
+    order: 4,
+    bio: "BSc student of Computer Engineering, Software Engineering, Sharif University of Technology.",
+    email: "parhamfaizolahi@gmail.com",
+    // telegram: "@…",
+    photo: { src: "/images/staff/parham-faizolahi.jpg", alt: "Parham Faizolahi" },
   },
   {
     id: "sahar-semsarha",

@@ -13,12 +13,6 @@ type StaffPersonProps = {
   className?: string;
 };
 
-function roleLabel(role: string): string {
-  if (role === "instructor") return "Instructor";
-  if (role === "ta") return "Teaching assistant";
-  return role;
-}
-
 function initialsFromName(name: string): string {
   const cleaned = name.replace(/^dr\.?\s+/i, "").trim();
   const parts = cleaned.split(/\s+/).filter(Boolean);
@@ -88,10 +82,6 @@ export function StaffPerson({ person, className }: StaffPersonProps) {
 
       <div className={styles.body}>
         <h3 className={styles.name}>{person.name}</h3>
-        <p className={styles.role}>
-          {person.title ? `${person.title} · ` : null}
-          {roleLabel(person.role)}
-        </p>
 
         {person.bio ? <p className={styles.bio}>{person.bio}</p> : null}
 

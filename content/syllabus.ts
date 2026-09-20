@@ -42,38 +42,39 @@ export const syllabus: SyllabusContent = {
     },
   ],
   grading:
-    "Your grade combines exams, quizzes, homework, and the course project. The table below lists each component; exact weights will appear when staff publish them.",
+    "Your grade is built from a 20-point core (homework, course project, final exam, and TA quizzes), plus bonus opportunities on the project and in class. The table below matches the official grading policy.",
   assessments: [
     {
-      title: "Midterm",
-      weight: "TBD",
-      detail: "In-term exam covering foundations and statistical-learning topics covered to that point.",
-    },
-    {
-      title: "Final",
-      weight: "TBD",
-      detail: "End-of-term exam spanning the full course, with emphasis on later modules as announced.",
-    },
-    {
-      title: "Quizzes",
-      weight: "TBD",
-      detail: "Short checks on lecture and workshop material; schedule and format announced in class.",
-    },
-    {
-      title: "Homeworks",
-      weight: "TBD",
+      title: "Homework",
+      weight: "7.5",
       detail:
-        "Problem sets (including the time-series assignment) spanning visualization, classical ML, deep learning, and related topics.",
+        "Six assignments (Homework 1–6), including the time-series problem set. Deadlines and responsible TAs are on the Assignments page.",
     },
     {
-      title: "Project",
-      weight: "TBD",
+      title: "Course project",
+      weight: "4.5 (+1 bonus)",
       detail:
-        "Multi-phase course project from orientation through Phases 1–3 and the final presentation.",
+        "Multi-phase course project (Phases 1–3) and final presentation. Up to one additional bonus point may apply as announced in class.",
+    },
+    {
+      title: "Final exam",
+      weight: "5",
+      detail: "End-of-term exam covering the full course; emphasis by module as announced by instructors.",
+    },
+    {
+      title: "Teaching assistant quizzes",
+      weight: "3",
+      detail: "Four quizzes led by teaching assistants; topics and dates follow lecture and workshop coverage.",
+    },
+    {
+      title: "Class quiz",
+      weight: "Bonus",
+      detail:
+        "In-class quizzes with floating bonus points. Attend and participate to earn credit toward your grade.",
     },
   ],
   gradingNote:
-    "Grade weights are not published yet. When available, they will replace the TBD values in this table and may also be announced on the site. Until then, use this table as the assessment inventory only.",
+    "Core components total 20 points. With the project bonus and class-quiz bonuses, the course is graded on more than 20 + 1 points overall. Any rounding or normalization rules will be announced in class.",
   policies:
     "Follow in-class announcements for attendance, late work, academic integrity, and preferred contact channels. Prefer the responsible TA listed on each assignment when asking about a specific homework or project phase; use the Staff page for emails and Telegram when published. Policy details will be expanded here once instructors finalize them.",
   sections: [

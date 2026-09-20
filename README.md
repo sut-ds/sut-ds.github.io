@@ -97,7 +97,7 @@ Manual redeploy: Actions → **Deploy to GitHub Pages** → **Run workflow**.
 These do **not** block the public shell; publish when staff confirm:
 
 * Official calendar dates (provisional Mehr→Dey table is live)
-* Grade weight percentages (table shows TBD)
+* Further policy detail beyond the published point breakdown (if instructors add midterm or other changes)
 * Lecture / workshop / assignment material files and videos
 * Remaining staff emails, Telegram handles, and photos
 * Assignment `dueAt` / `taIds` as owners are assigned

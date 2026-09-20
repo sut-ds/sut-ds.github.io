@@ -10,6 +10,6 @@ export const announcements: Announcement[] = [
     pinned: true,
     excerpt:
       "The rearranged lecture sequence, presenter allocation, homework themes, and project phases are now published.",
-    body: "The Foundations of Data Science revised syllabus is now available on this site: lecture order with presenters, workshop themes, homework topics, and project phases. Calendar session dates and material files will appear as they are published. Start with the Syllabus and Lectures pages, and see Staff for instructor and Head TA contacts.",
+    body: "The Foundations of Data Science revised syllabus is now available on this site: lecture order with presenters, workshop themes, homework topics, and project phases. Calendar session dates and material files will appear as they are published. Start with the Syllabus and Lectures pages, and see Staff for instructor and TA contacts.",
   },
 ];

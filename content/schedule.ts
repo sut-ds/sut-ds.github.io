@@ -7,7 +7,7 @@
  *
  * Rows include:
  * - one lecture row per allocated class session
- * - one workshop row when the lecture lists a workshop
+ * - workshop rows only when `date` is set in content/workshops.ts
  * - homework/project **release** and **deadline** rows (color-coded in the UI)
  */
 import { assignments } from "./assignments";
@@ -86,7 +86,7 @@ function workshopInstructorName(instructorId: string | undefined): string | unde
 }
 
 type ScheduledWorkshop = Pick<Workshop, "slug" | "title"> &
-  Partial<Pick<Workshop, "summary" | "instructorId">>;
+  Partial<Pick<Workshop, "summary" | "instructorId" | "date">>;
 
 const publishedLectures = lectures
   .filter((lecture) => lecture.publish)
@@ -134,10 +134,14 @@ publishedLectures.forEach((lecture) => {
       ? [{ title: lecture.workshop, slug: `${lecture.slug}-workshop` }]
       : [];
   workshopsForSchedule.forEach((workshop) => {
+    if (!workshop.date) {
+      return;
+    }
+
     rows.push({
-      id: `workshop-${lecture.slug}`,
+      id: `workshop-${workshop.slug}`,
       slug: workshop.slug,
-      date,
+      date: workshop.date,
       title: workshop.title,
       week: lecture.week,
       type: "workshop",
@@ -200,6 +204,22 @@ publishedLectures.forEach((lecture) => {
   }
   }
 });
+
+workshops
+  .filter((workshop) => workshop.publish && !workshop.lectureId && workshop.date)
+  .forEach((workshop) => {
+    rows.push({
+      id: `workshop-${workshop.slug}`,
+      slug: workshop.slug,
+      date: workshop.date!,
+      title: workshop.title,
+      type: "workshop",
+      instructor: workshopInstructorName(workshop.instructorId),
+      description: workshop.summary ?? `Hands-on ${workshop.title}.`,
+      order: sortOrder++,
+      publish: true,
+    });
+  });
 
 // Final project presentations are meetings, not assignment records.
 rows.push(

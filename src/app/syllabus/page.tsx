@@ -192,7 +192,7 @@ export default function SyllabusPage() {
                   <thead>
                     <tr>
                       <th scope="col">Component</th>
-                      <th scope="col">Weight</th>
+                      <th scope="col">Points</th>
                       <th scope="col">Details</th>
                     </tr>
                   </thead>

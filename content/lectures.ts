@@ -193,7 +193,7 @@ const rows: Row[] = [
   {
     section: "16-18",
     title: "Building a Small Language Model",
-    workshop: "Project Workshop",
+    workshop: "—",
     notes:
       "Hands-on construction of a small LLM, using Andrej Karpathy’s video lectures as the main practical reference.",
     presenter: "Dr. Amir Hossein Saberi",

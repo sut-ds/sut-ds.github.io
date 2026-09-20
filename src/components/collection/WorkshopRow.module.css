@@ -68,6 +68,26 @@
   line-height: 1.15;
 }
 
+.schedule {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2) var(--space-3);
+  margin: var(--space-2) 0 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-600);
+}
+
+.scheduleGreg {
+  color: var(--color-neutral-500);
+  font-variant-numeric: tabular-nums;
+}
+
+.scheduleGreg::before {
+  content: "·";
+  margin-inline-end: var(--space-2);
+}
+
 .instructor {
   display: flex;
   align-items: center;

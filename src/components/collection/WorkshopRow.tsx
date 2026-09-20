@@ -1,6 +1,7 @@
 import { MaterialLinks } from "@/components/collection/MaterialLinks";
 import { StatusLabel } from "@/components/foundation/StatusLabel";
 import { TextLink } from "@/components/foundation/TextLink";
+import { formatDisplayDate, formatPersianDate } from "@/lib/content/dates";
 import { cx } from "@/lib/cx";
 import type { Lecture, StaffMember, Workshop } from "@/types/content";
 
@@ -47,11 +48,25 @@ export function WorkshopRow({
             <p className={styles.kicker}>
               {relatedLecture?.order != null
                 ? `Lab · Lecture ${relatedLecture.order}`
-                : "Hands-on lab"}
+                : workshop.lectureId
+                  ? "Hands-on lab"
+                  : "Studio lab"}
             </p>
             <h2 className={styles.title} id={`${workshop.slug}-title`}>
               {workshop.title}
             </h2>
+            <p className={styles.schedule}>
+              {workshop.date ? (
+                <>
+                  <time dateTime={workshop.date}>{formatPersianDate(workshop.date)}</time>
+                  <span className={styles.scheduleGreg}>
+                    {formatDisplayDate(workshop.date)}
+                  </span>
+                </>
+              ) : (
+                <StatusLabel variant="neutral">Time TBD</StatusLabel>
+              )}
+            </p>
           </div>
 
           <div className={styles.instructor} aria-label="Workshop instructor">
