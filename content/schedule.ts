@@ -23,17 +23,18 @@ import type { ScheduleEntry, Workshop } from "@/types/content";
  */
 const TERM_START = Date.UTC(2026, 8, 27); // Sunday, 27 Sep 2026
 
-/** Syllabus-aligned assignment timing (lecture slug → assignment slug). */
-const assignmentByLectureSlug: Record<string, string> = {
-  "05-data-visualization": "homework-1",
-  "06-ml-dataflow-part-1-data-processing": "project-phase-1",
-  "09-regression": "homework-2",
-  "11-unsupervised-and-semi-supervised-learning": "project-phase-2",
-  "12-causality": "homework-3",
-  "16-transformers-foundations-and-architectures": "homework-4",
-  "19-diffusion-models": "homework-5",
-  "20-modern-time-series-modeling-with-transformers": "homework-6",
-  "22-ml-dataflow-part-4-pipeline": "project-phase-3",
+/** Syllabus-aligned assignment timing (lecture slug → assignment slug(s)). */
+const assignmentByLectureSlug: Record<string, string | string[]> = {
+  "05-regression": "homework-1",
+  "07-unsupervised-and-semi-supervised-learning": ["homework-2", "project-phase-2"],
+  "11-ml-dataflow-part-1-data-processing-revised": [
+    "homework-3",
+    "project-phase-1",
+  ],
+  "19-transformers-foundations-and-architectures": "homework-4",
+  "22-diffusion-models": "homework-5",
+  "23-modern-time-series-modeling-with-transformers": "homework-6",
+  "15-ml-dataflow-part-4-pipeline-revised": "project-phase-3",
 };
 
 /**
@@ -154,54 +155,62 @@ publishedLectures.forEach((lecture) => {
     });
   });
 
-  const assignmentSlug = session === 0 ? assignmentByLectureSlug[lecture.slug] : undefined;
-  if (!assignmentSlug) {
+  const configuredAssignments = session === 0
+    ? assignmentByLectureSlug[lecture.slug]
+    : undefined;
+  if (!configuredAssignments) {
     return;
   }
 
-  const assignment = assignments.find(
-    (item) => item.slug === assignmentSlug && item.publish,
-  );
-  if (!assignment) {
-    return;
-  }
+  const assignmentSlugs = Array.isArray(configuredAssignments)
+    ? configuredAssignments
+    : [configuredAssignments];
 
-  const releaseDate = assignmentReleaseOverrides[assignment.slug] ?? date;
-  const deadlineDate =
-    assignmentDeadlineOverrides[assignment.slug] ??
-    addDaysIso(date, assignment.kind === "project" ? 21 : 14);
+  assignmentSlugs.forEach((assignmentSlug) => {
+    const assignment = assignments.find(
+      (item) => item.slug === assignmentSlug && item.publish,
+    );
+    if (!assignment) {
+      return;
+    }
 
-  rows.push({
-    id: `release-${assignment.slug}`,
-    slug: `release-${assignment.slug}`,
-    date: releaseDate,
-    title: assignment.title,
-    week: lecture.week,
-    type: "release",
-    instructor: undefined,
-    description: assignment.summary,
-    assignmentIds: [assignment.slug],
-    lectureIds: [lecture.slug],
-    order: sortOrder++,
-    publish: true,
-  });
+    const releaseDate = assignmentReleaseOverrides[assignment.slug] ?? date;
+    const deadlineDate =
+      assignmentDeadlineOverrides[assignment.slug] ??
+      addDaysIso(date, assignment.kind === "project" ? 21 : 14);
 
-  if (assignment.slug !== "project-orientation") {
     rows.push({
-      id: `deadline-${assignment.slug}`,
-      slug: `deadline-${assignment.slug}`,
-      date: deadlineDate,
+      id: `release-${assignment.slug}`,
+      slug: `release-${assignment.slug}`,
+      date: releaseDate,
       title: assignment.title,
       week: lecture.week,
-      type: "deadline",
+      type: "release",
       instructor: undefined,
-      description: "Provisional deadline — replace when official due dates are published.",
+      description: assignment.summary,
       assignmentIds: [assignment.slug],
       lectureIds: [lecture.slug],
       order: sortOrder++,
       publish: true,
     });
-  }
+
+    if (assignment.slug !== "project-orientation") {
+      rows.push({
+        id: `deadline-${assignment.slug}`,
+        slug: `deadline-${assignment.slug}`,
+        date: deadlineDate,
+        title: assignment.title,
+        week: lecture.week,
+        type: "deadline",
+        instructor: undefined,
+        description: "Provisional deadline — replace when official due dates are published.",
+        assignmentIds: [assignment.slug],
+        lectureIds: [lecture.slug],
+        order: sortOrder++,
+        publish: true,
+      });
+    }
+  });
   }
 });
 

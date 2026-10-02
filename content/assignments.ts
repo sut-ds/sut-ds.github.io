@@ -23,9 +23,8 @@ export const assignments: Assignment[] = [
     order: 2,
     status: "TBD",
     logo: logo("homework-1", "Homework 1"),
-    summary:
-      "Data manipulation, visualization, and elementary inference (aligned with the data visualization module).",
-    taIds: ["hossein-soleimani"],
+    summary: "Probability, statistics, and regression.",
+    taIds: ["mohammadali-naderi"],
   },
   {
     slug: "project-phase-1",
@@ -48,9 +47,8 @@ export const assignments: Assignment[] = [
     order: 4,
     status: "TBD",
     logo: logo("homework-2", "Homework 2"),
-    summary:
-      "Web scraping, database population, probability and statistics, and regression.",
-    taIds: ["mohammadali-naderi"],
+    summary: "Supervised and unsupervised machine learning.",
+    taIds: ["darya-azaddel"],
   },
   {
     slug: "project-phase-2",
@@ -73,8 +71,8 @@ export const assignments: Assignment[] = [
     order: 6,
     status: "TBD",
     logo: logo("homework-3", "Homework 3"),
-    summary: "Classical machine learning.",
-    taIds: ["darya-azaddel"],
+    summary: "Data processing and visualization.",
+    taIds: ["hossein-soleimani"],
   },
   {
     slug: "homework-4",
@@ -85,7 +83,7 @@ export const assignments: Assignment[] = [
     order: 7,
     status: "TBD",
     logo: logo("homework-4", "Homework 4"),
-    summary: "Causality and deep learning and transformers.",
+    summary: "Deep learning and transformers.",
     taIds: ["mohammad-hossein-momeni", "ali-rezaei"],
   },
   {
@@ -97,7 +95,7 @@ export const assignments: Assignment[] = [
     order: 8,
     status: "TBD",
     logo: logo("homework-5", "Homework 5"),
-    summary: "Generative and diffusion models.",
+    summary: "Diffusion models.",
     taIds: ["mohammad-eshtehardian", "aida-aryafar"],
   },
   {
@@ -109,7 +107,7 @@ export const assignments: Assignment[] = [
     order: 9,
     status: "TBD",
     logo: logo("homework-6", "Homework 6"),
-    summary: "Time-series Forecasting.",
+    summary: "Time series analysis.",
     taIds: ["amir-reza-azari", "saba-atashfaraz"],
   },
   {

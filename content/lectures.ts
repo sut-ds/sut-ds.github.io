@@ -63,58 +63,43 @@ const rows: Row[] = [
     notes: "Course overview and expectations.",
     presenter: "Dr. Babak Hossein Khalaj",
     resourceIds: ["python"],
+    materials: [
+      {
+        label: "Slides",
+        href: "/materials/lectures/01-course-introduction-slides.pdf",
+        kind: "slides",
+        external: false,
+      },
+    ],
   },
   {
     section: "0",
     title: "Course Introduction",
     workshop: "NumPy and Pandas",
-    notes: "Data-science in production and buisness contexts.",
+    notes: "Data-science environment and essential tools.",
     presenter: "Dr. Babak Hossein Khalaj",
     resourceIds: ["numpy", "pandas"],
-  },
-  {
-    section: "1",
-    title: "Data Models",
-    workshop: "Matplotlib and Seaborn",
-    notes: "Foundations of data representation and modeling.",
-    presenter: "Dr. Babak Hossein Khalaj",
-    resourceIds: ["matplotlib", "seaborn"],
-  },
-  {
-    section: "2",
-    title: "Databases",
-    workshop: "SQL",
-    notes: "Relational databases, querying, and data acquisition.",
-    presenter: "Dr. Babak Hossein Khalaj",
-    resourceIds: ["sql"],
-  },
-  {
-    section: "3",
-    title: "Data Visualization",
-    workshop: "—",
-    notes: "Principles of exploratory and explanatory visualization.",
-    presenter: "Dr. Babak Hossein Khalaj",
-    resourceIds: ["matplotlib", "seaborn"],
-  },
-  {
-    section: "5",
-    title: "ML Dataflow – Part 1: Data Processing",
-    workshop: "Web Scraping",
-    notes: "Data collection, cleaning, preprocessing, and feature preparation.",
-    presenter: "Dr. Babak Hossein Khalaj",
-    resourceIds: ["python"],
+    materials: [
+      {
+        label: "Slides",
+        href: "/materials/lectures/02-course-introduction-slides.pdf",
+        kind: "slides",
+        external: false,
+      },
+    ],
   },
   {
     section: "4",
     title: "Probability and Statistics",
     workshop: "—",
-    notes: "Review on probability and statistics; based primarily on Tibshirani et al.",
+    notes:
+      "Statistical learning foundations; based primarily on Tibshirani et al.",
     presenter: "Dr. Amir Hossein Saberi",
     resourceIds: ["isl"],
   },
   {
     section: "4",
-    title: "Probability and Statistics",
+    title: "Probability and Statistics (continued)",
     workshop: "—",
     notes:
       "Probability, estimation, uncertainty, and elementary inference for statistical learning.",
@@ -149,6 +134,38 @@ const rows: Row[] = [
     resourceIds: ["isl", "scikit-learn"],
   },
   {
+    section: "1",
+    title: "Data Models (Summary)",
+    workshop: "Matplotlib and Seaborn",
+    notes: "Foundations of data representation and modeling.",
+    presenter: "Dr. Babak Hossein Khalaj",
+    resourceIds: ["matplotlib", "seaborn"],
+  },
+  {
+    section: "2",
+    title: "Databases (Lecture and Coordination)",
+    workshop: "SQL",
+    notes: "Relational databases, querying, and data acquisition.",
+    presenter: "Dr. Babak Hossein Khalaj",
+    resourceIds: ["sql"],
+  },
+  {
+    section: "3",
+    title: "Data Visualization (Revised)",
+    workshop: "—",
+    notes: "Principles of exploratory and explanatory visualization.",
+    presenter: "Dr. Babak Hossein Khalaj",
+    resourceIds: ["matplotlib", "seaborn"],
+  },
+  {
+    section: "5",
+    title: "ML Dataflow – Part 1: Data Processing (Revised)",
+    workshop: "Web Scraping",
+    notes: "Data collection, cleaning, preprocessing, and feature preparation.",
+    presenter: "Dr. Babak Hossein Khalaj",
+    resourceIds: ["python"],
+  },
+  {
     section: "6",
     title: "Causality",
     workshop: "NetworkX and Plotly",
@@ -158,11 +175,35 @@ const rows: Row[] = [
   },
   {
     section: "10",
-    title: "ML Dataflow – Part 2: Model Evaluation",
+    title: "ML Dataflow – Part 2: Model Evaluation (Revised)",
     workshop: "—",
     notes: "Evaluation protocols, validation, metrics, and error analysis.",
     presenter: "Dr. Babak Hossein Khalaj",
     resourceIds: ["isl", "scikit-learn"],
+  },
+  {
+    section: "15",
+    title: "ML Dataflow – Part 3: Model Implementation (Revised)",
+    workshop: "—",
+    notes: "Implementation, reproducibility, and integration of trained models.",
+    presenter: "Dr. Babak Hossein Khalaj",
+    resourceIds: ["python"],
+  },
+  {
+    section: "19",
+    title: "ML Dataflow – Part 4: Pipeline (Revised)",
+    workshop: "—",
+    notes: "End-to-end machine-learning pipelines.",
+    presenter: "Dr. Babak Hossein Khalaj",
+    resourceIds: ["python", "scikit-learn"],
+  },
+  {
+    section: "21",
+    title: "ML Dataflow – Part 5: Monitoring",
+    workshop: "—",
+    notes: "Deployment monitoring, drift, reliability, and lifecycle management.",
+    presenter: "Dr. Babak Hossein Khalaj",
+    resourceIds: ["scikit-learn"],
   },
   {
     section: "10",
@@ -193,7 +234,7 @@ const rows: Row[] = [
   {
     section: "16-18",
     title: "Building a Small Language Model",
-    workshop: "—",
+    workshop: "Project Workshop",
     notes:
       "Hands-on construction of a small LLM, using Andrej Karpathy’s video lectures as the main practical reference.",
     presenter: "Dr. Amir Hossein Saberi",
@@ -205,7 +246,7 @@ const rows: Row[] = [
   },
   {
     section: "13",
-    title: "Generative Models",
+    title: "Generative Models (Revised)",
     workshop: "—",
     notes:
       "Foundations of generative modeling, based on the principal/original research papers.",
@@ -230,35 +271,11 @@ const rows: Row[] = [
     presenter: "Dr. Amir Hossein Saberi",
     resourceIds: ["timesfm-das-kong-sen-2023", "chronos-ansari-stella-2024"],
   },
-  {
-    section: "15",
-    title: "ML Dataflow – Part 3: Model Implementation",
-    workshop: "—",
-    notes: "Implementation, reproducibility, and integration of trained models.",
-    presenter: "Dr. Babak Hossein Khalaj",
-    resourceIds: ["python"],
-  },
-  {
-    section: "19",
-    title: "ML Dataflow – Part 4: Pipeline",
-    workshop: "—",
-    notes: "End-to-end machine-learning pipelines.",
-    presenter: "Dr. Babak Hossein Khalaj",
-    resourceIds: ["python", "scikit-learn"],
-  },
-  {
-    section: "21",
-    title: "ML Dataflow – Part 5: Monitoring",
-    workshop: "—",
-    notes: "Deployment monitoring, drift, reliability, and lifecycle management.",
-    presenter: "Dr. Babak Hossein Khalaj",
-    resourceIds: ["scikit-learn"],
-  },
 ];
 
 // Allocated meetings from the revised syllabus spreadsheet, in row order.
 const sessionsByRow = [
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2,
 ];
 
 function weekFromSection(section: string): number | undefined {

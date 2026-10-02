@@ -46,7 +46,7 @@ export const faq: FaqItem[] = [
     slug: "homework-list",
     question: "What homeworks and project phases are planned?",
     answer:
-      "The Assignments page lists Homework 1–5, a time-series assignment, project orientation, Phases 1–3, and the final presentation. Each item can name its responsible TA(s). Deadlines and handouts will appear when published; do not assume dates until they are posted.",
+      "The Assignments page lists Homework 1–6 (probability through time series), project Phases 1–3, and the final presentation. Each item can name its responsible TA(s). Deadlines and handouts will appear when published; do not assume dates until they are posted.",
     category: "assignments",
     publish: true,
     order: 5,
