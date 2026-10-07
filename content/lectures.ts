@@ -96,6 +96,14 @@ const rows: Row[] = [
       "Statistical learning foundations; based primarily on Tibshirani et al.",
     presenter: "Dr. Amir Hossein Saberi",
     resourceIds: ["isl"],
+    materials: [
+      {
+        label: "Slides",
+        href: "/materials/lectures/03-probability-and-statistics-slides.pdf",
+        kind: "slides",
+        external: false,
+      },
+    ],
   },
   {
     section: "4",
@@ -105,6 +113,14 @@ const rows: Row[] = [
       "Probability, estimation, uncertainty, and elementary inference for statistical learning.",
     presenter: "Dr. Amir Hossein Saberi",
     resourceIds: ["isl"],
+    materials: [
+      {
+        label: "Slides",
+        href: "/materials/lectures/03-probability-and-statistics-slides.pdf",
+        kind: "slides",
+        external: false,
+      },
+    ],
   },
   {
     section: "6",

@@ -69,7 +69,18 @@ type StandaloneWorkshop = WorkshopOverride & {
  * lecture. Set `date` on an override when the workshop time is confirmed.
  */
 const workshopOverrides: Record<string, WorkshopOverride | WorkshopOverride[]> = {
-  "01-course-introduction": { instructorId: "soheil-sayahvarg" },
+  "01-course-introduction": {
+    instructorId: "soheil-sayahvarg",
+    date: "2026-10-06",
+    materials: [
+      {
+        label: "Python",
+        href: "/materials/workshops/01-python-workshop.py",
+        kind: "other",
+        external: false,
+      },
+    ],
+  },
   "02-course-introduction": { instructorId: "mohammadali-naderi" },
   "09-databases-lecture-and-coordination": [
     { instructorId: "shahab-hosseini" },
